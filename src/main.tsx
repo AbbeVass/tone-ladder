@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
+import "./styles/index.css";
 import App from './App.tsx'
 
 const redirect = sessionStorage.redirect;
