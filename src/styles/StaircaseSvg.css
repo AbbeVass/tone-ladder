@@ -1,7 +1,7 @@
 .svg-container {
   max-width: 50vw;
   width: fit-content;
-  height: fit-content;
+  height: 100%;
   padding: 3%;
 }
 
