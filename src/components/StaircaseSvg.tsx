@@ -8,12 +8,15 @@ const THICKNESS = 5;
 const COLOR = getComputedStyle(document.documentElement)
   .getPropertyValue('--mantine-color-gray-1');
 
+const SVG_WIDTH = TONE_LADDER.length * STEP_WIDTH + THICKNESS;
+const SVG_HEIGHT = TONE_LADDER.length * STEP_HEIGHT + THICKNESS;
+
 export default function StaircaseSvg() {
   return (
     <svg
       className="staircase-svg"
-      viewBox="0 0 400 400"
-      preserveAspectRatio="xMinYMin meet"
+      viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
+      preserveAspectRatio="xMinYMid meet"
     >
       {Array.from(TONE_LADDER, (tone, i) => {
 
@@ -22,14 +25,14 @@ export default function StaircaseSvg() {
 
         return (
           <g key={i}>
-            <rect
+            <rect // horizontal line
               x={x}
               y={y}
               width={STEP_WIDTH + THICKNESS}
               height={THICKNESS}
               fill={COLOR}
             />
-            <rect
+            <rect // vertical line
               x={x + STEP_WIDTH}
               y={y - STEP_HEIGHT + THICKNESS - 1}
               width={THICKNESS}
