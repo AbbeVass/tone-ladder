@@ -3,7 +3,7 @@ import { TONE_LADDER } from "../defs/constants";
 
 const STEP_WIDTH = 20;
 const STEP_HEIGHT = 30;
-const THICKNESS = 5;
+const THICKNESS = 3;
 
 const COLOR = getComputedStyle(document.documentElement)
   .getPropertyValue('--mantine-color-gray-1');
@@ -42,7 +42,7 @@ export default function StaircaseSvg() {
 
             <text
               x={x + STEP_WIDTH / 2}
-              y={y - 2 * THICKNESS}
+              y={y - 3 * THICKNESS}
               textAnchor="middle"
               dominantBaseline="middle"
               fill={COLOR}
