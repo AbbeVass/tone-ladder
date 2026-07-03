@@ -1,12 +1,9 @@
 import "../styles/StaircaseSvg.css";
-import { TONE_LADDER } from "../defs/constants";
+import { TONE_LADDER, TEXT_COLOR } from "../defs/constants";
 
 const STEP_WIDTH = 20;
 const STEP_HEIGHT = 30;
 const THICKNESS = 3;
-
-const COLOR = getComputedStyle(document.documentElement)
-  .getPropertyValue('--mantine-color-gray-1');
 
 const SVG_WIDTH = TONE_LADDER.length * STEP_WIDTH + THICKNESS;
 const SVG_HEIGHT = TONE_LADDER.length * STEP_HEIGHT + THICKNESS;
@@ -30,14 +27,14 @@ export default function StaircaseSvg() {
               y={y}
               width={STEP_WIDTH + THICKNESS}
               height={THICKNESS}
-              fill={COLOR}
+              fill={TEXT_COLOR}
             />
             <rect // vertical line
               x={x + STEP_WIDTH}
               y={y - STEP_HEIGHT + THICKNESS - 1}
               width={THICKNESS}
               height={STEP_HEIGHT}
-              fill={COLOR}
+              fill={TEXT_COLOR}
             />
 
             <text
@@ -45,7 +42,7 @@ export default function StaircaseSvg() {
               y={y - 3 * THICKNESS}
               textAnchor="middle"
               dominantBaseline="middle"
-              fill={COLOR}
+              fill={TEXT_COLOR}
               fontSize="20px"
               fontWeight="bold"
             >
