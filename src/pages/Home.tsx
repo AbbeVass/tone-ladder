@@ -1,6 +1,8 @@
 import { Button, Center, Box, Flex } from "@mantine/core"
 import StaircaseSvg from "../components/StaircaseSvg"
+import ToneLadderSvg from "../components/ToneLadderSvg"
 import "../styles/Home.css"
+import "../styles/svg.css"
 
 function Home() {
   return (
@@ -9,7 +11,12 @@ function Home() {
       className="home-container"
     >
       <Box className="svg-container">
-        <StaircaseSvg />
+        <Box className="staircase-container">
+          <StaircaseSvg />
+        </Box>
+        <Box className="tone-ladder-container">
+          <ToneLadderSvg />
+        </Box>
       </Box>
       <Center>
         <Button
