@@ -21,14 +21,22 @@ export default function Home() {
           <ToneLadderSvg displayLadder={EXAMPLE} stepWidth={TONE_LADDER_STEP_WIDTH} />
         </Box>
       </Box>
+      
       <Center>
-        <Button
-          size="lg"
-          color="var(--mantine-color-lime-9)"
-          className="generate-button"
-        >
-          Ny melodi
-        </Button>
+        <Box className="button-container">
+          <Button
+            size="lg"
+            color="var(--mantine-color-lime-9)"
+          >
+            Ny melodi
+          </Button>
+          <Button
+            size="lg"
+            onClick={() => window.location.href = "/tone-ladder/settings"}
+          >
+            Inställningar
+          </Button>
+        </Box>
       </Center>
     </Flex>
   );

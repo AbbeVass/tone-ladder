@@ -2,6 +2,10 @@
   height: 100vh;
 }
 
-.generate-button {
+.button-container {
   margin: 3vh 3vw;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
