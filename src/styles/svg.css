@@ -1,6 +1,6 @@
 .svg-container {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   flex: 1;
   min-height: 0;
@@ -9,30 +9,29 @@
 
 .staircase-container {
   width: auto;
-  min-width: 0;
-  height: 100%;
-  max-height: 100%;
   flex: 0 1 auto;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
   display: flex;
-  justify-content: left;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .tone-ladder-container {
+  width: auto;
   flex: 1 1 auto;
   min-width: 0;
+  min-height: 0;
   height: 100%;
-  max-height: 100%;
   display: flex;
-  justify-content: left;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .staircase-svg,
 .tone-ladder-svg {
-  max-height: 100%;
-  max-width: 100%;
   width: auto;
-  height: auto;
+  height: 100%;
   display: block;
 }
