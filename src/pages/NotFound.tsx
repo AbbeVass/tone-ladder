@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
-import { Flex, Title, Text } from "@mantine/core"
-import { TEXT_COLOR } from "../defs/constants"
+import { Link } from "react-router-dom";
+import { Flex, Title, Text } from "@mantine/core";
+import { TEXT_COLOR } from "../defs/constants";
 
-function NotFound() {
+export default function NotFound() {
   return (
     <Flex
       direction="column"
@@ -24,5 +24,3 @@ function NotFound() {
     </Flex>
   )
 }
-
-export default NotFound

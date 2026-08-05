@@ -1,8 +1,8 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import NotFound from './pages/NotFound.tsx'
-import Home from './pages/Home.tsx'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NotFound from './pages/NotFound.tsx';
+import Home from './pages/Home.tsx';
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -12,5 +12,3 @@ function App() {
     </BrowserRouter>
   )
 }
-
-export default App

@@ -1,12 +1,12 @@
-import { Button, Center, Box, Flex } from "@mantine/core"
-import StaircaseSvg from "../components/StaircaseSvg"
-import ToneLadderSvg from "../components/ToneLadderSvg"
-import "../styles/Home.css"
-import "../styles/svg.css"
+import { Button, Center, Box, Flex } from "@mantine/core";
+import StaircaseSvg from "../components/StaircaseSvg";
+import ToneLadderSvg from "../components/ToneLadderSvg";
+import "../styles/Home.css";
+import "../styles/svg.css";
 
-function Home() {
-  const EXAMPLE = [5, 3, 4, 7, 3, 0, 10, 9]
-  const TONE_LADDER_STEP_WIDTH = 50
+export default function Home() {
+  const EXAMPLE = [5, 3, 4, 7, 3, 0, 10, 9];
+  const TONE_LADDER_STEP_WIDTH = 50;
 
   return (
     <Flex 
@@ -33,5 +33,3 @@ function Home() {
     </Flex>
   )
 }
-
-export default Home
