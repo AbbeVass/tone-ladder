@@ -31,5 +31,5 @@ export default function Home() {
         </Button>
       </Center>
     </Flex>
-  )
+  );
 }

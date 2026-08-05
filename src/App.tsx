@@ -10,5 +10,5 @@ export default function App() {
         <Route path="tone-ladder/" element={<Home />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
