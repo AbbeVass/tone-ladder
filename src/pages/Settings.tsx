@@ -8,7 +8,18 @@ import { TONE_LADDER } from "../defs/constants";
 export default function Settings() {
   document.title += " - Inställningar";
 
-  //const [settings, setSettings] = useState<Settings>({});
+  const [settings, setSettings] = useState<Settings>({
+    startTone: {
+      random: false,
+      index: 3
+    },
+    toneGroupPool: [[3, 4], [4, 3]],
+    melodyLength: {
+      random: false,
+      number: 8
+    },
+    maxToneDiff: 4
+  });
 
   return (
     <>
@@ -24,19 +35,33 @@ export default function Settings() {
           w={300}
           legend="Första ton"
           variant="filed"
+          data-mantine-color-scheme="dark"
         >
           <Switch
             label="Slumpmässig"
-            
-            /*onChange={(event) => {
-              settings.startTone.random = event.currentTarget.checked
-            }}*/
+            onChange={(event) => {
+              let _tempSettings = {...settings};
+              _tempSettings.startTone.random = event.currentTarget.checked;
+              setSettings(_tempSettings);
+            }}
           />
           <Space h="lg" />
           <Slider 
-            //disabled={settings.startTone.random}
+            disabled={settings.startTone.random}
             thumbSize={20}
-            color="blue"
+            mb={10}
+            min={0}
+            max={TONE_LADDER.length - 1}
+            step={1}
+            label={(value) => TONE_LADDER[value]}
+            marks={TONE_LADDER.map((tone, i) => {
+              return {value: i, label: tone};
+            })}
+            onChange={(value) => {
+              let _tempSettings = {...settings};
+              _tempSettings.startTone.index = value;
+              setSettings(_tempSettings);
+            }}
           />
         </Fieldset>
       </Flex>

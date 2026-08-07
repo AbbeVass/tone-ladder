@@ -1,3 +1,11 @@
 .mantine-Slider-bar {
   display: none;
 }
+
+.mantine-Slider-mark {
+  border: none;
+}
+
+.mantine-Slider-markLabel {
+  color: var(--mantine-color-gray-1)
+}
