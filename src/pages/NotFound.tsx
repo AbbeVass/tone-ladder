@@ -12,7 +12,7 @@ export default function NotFound() {
       m={50}
     >
       <Title c={TEXT_COLOR}>404 - Not Found</Title>
-      <Link to="/tone-ladder/">
+      <Link to="/tone-ladder">
         <Text
           size="xl"
           c={TEXT_COLOR}
