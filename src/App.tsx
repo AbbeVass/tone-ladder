@@ -8,7 +8,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="tone-ladder/*" element={<NotFound />} />
-        <Route path="tone-ladder/" element={<Home />} />
+        <Route path="tone-ladder" element={<Home />} />
         <Route path="tone-ladder/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
