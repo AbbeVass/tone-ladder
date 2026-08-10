@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, Center, Box, Flex, Text, Space } from "@mantine/core";
-import "../styles/Home.css";
 import "../styles/svg.css";
 import { TEXT_COLOR } from "../defs/constants";
 import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset } from "../defs/functions";
