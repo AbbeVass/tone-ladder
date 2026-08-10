@@ -43,9 +43,9 @@ export default function Home() {
               size="lg"
               color="var(--mantine-color-lime-9)"
               onClick={() => {
-                const melody = generateMelody(SETTINGS);
-                setMelody(melody);
-                storeMelody(melody);
+                const newMelody = generateMelody(SETTINGS);
+                setMelody(newMelody);
+                storeMelody(newMelody);
               }}
             >
               Ny melodi
