@@ -3,10 +3,10 @@ export interface Settings {
     random: boolean;
     index: number;
   },
-  toneGroupPool: number[][];
+  toneCombinationsPool: number[][];
   melodyLength: {
     random: boolean;
-    number: number;
-  }
+    length: number;
+  },
   maxToneDiff: number;
 }

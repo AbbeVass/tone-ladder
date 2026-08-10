@@ -1,11 +1,39 @@
+/* Set the back buttoon in
+the top left corner of the window */
+@media (min-width: 550px) {
+  .settings-back-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
+/* Border color of each section */
+.mantine-Fieldset-root {
+  border-color: var(--mantine-color-gray-1);
+}
+
+/* NativeSelect icon */
+.mantine-ComboboxChevron-chevron {
+  color: var(--mantine-color-dark-0);
+}
+
+/* Remove the bar behind the thumb */
 .mantine-Slider-bar {
   display: none;
 }
 
+/* Remove highlight from marksbehind the thumb */
 .mantine-Slider-mark {
   border: none;
 }
 
+/* Control the color of the slider track */
+.mantine-Slider-track::before {
+  background-color: var(--mantine-color-gray-6);
+}
+
+/* Control the color of the mark labels */
 .mantine-Slider-markLabel {
   color: var(--mantine-color-gray-1)
 }
