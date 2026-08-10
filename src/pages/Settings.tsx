@@ -171,7 +171,9 @@ export default function Settings() {
             data={TONE_COMBINATIONS.map((combination) => {
               return {
                 value: combination.join(","),
-                label: combination.join(" - ")
+                label: combination.map((index) => {
+                  return TONE_LADDER[index]
+                  }).join(" - ")
               };
             })}
             value={settings.toneCombinationsPool.map((combination) => {
