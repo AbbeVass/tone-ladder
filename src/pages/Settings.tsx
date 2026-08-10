@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect } from "@mantine/core";
 import "../styles/Settings.css";
 import type { Settings } from "../interfaces/Settings.interface";
-import { TONE_LADDER, LENGTH_LIMITS, TEXT_COLOR, SETTINGS_STORAGE_KEY, CUSTOM_PRESET_LABEL } from "../defs/constants";
-import { getStoredSettings, getActivePreset } from "../defs/functions";
+import { TONE_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL } from "../defs/constants";
+import { getStoredSettings, getActivePreset, storeSettings } from "../defs/functions";
 import { TONE_COMBINATIONS } from "../defs/toneCombinations";
 import { SETTINGS_PRESETS } from "../defs/settingsPresets";
 
@@ -14,12 +14,12 @@ export default function Settings() {
   const [selectedPreset, setSelectedPreset] = useState<string>(getActivePreset(settings));
 
   useEffect(() => {
-    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
+    storeSettings(settings);
     setSelectedPreset(getActivePreset(settings));
   }, [settings]);
 
   /**
-   * @returns a cloneof the current settings object
+   * @returns a clone of the current settings object
    */
   function getSettingsClone(): Settings {
     return JSON.parse(JSON.stringify(settings));

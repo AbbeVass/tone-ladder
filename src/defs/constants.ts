@@ -9,6 +9,7 @@ export const TEXT_COLOR = getComputedStyle(document.documentElement)
   .getPropertyValue('--mantine-color-gray-1');
 
 export const SETTINGS_STORAGE_KEY = "settings";
+export const MELODY_STORAGE_KEY = "melody";
 
 export const CUSTOM_PRESET_LABEL = "Anpassad";
 
