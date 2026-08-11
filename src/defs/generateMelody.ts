@@ -34,11 +34,11 @@ export function generateMelody(settings: Settings): number[] {
       if (comb.filter((tone) => {
           return tone >= 0 && tone < TONE_LADDER.length;
         }).length === comb.length
-        && comb.length > 0
+        && comb.length > 1
         && comb.slice(1).filter((tone, i) => {
-          return tone >= comb[i - 1] - settings.maxToneDiff
-              && tone <= comb[i - 1] + settings.maxToneDiff;
-        }).length === comb.length
+          return tone >= comb[i] - settings.maxToneDiff
+              && tone <= comb[i] + settings.maxToneDiff;
+        }).length === comb.length - 1
       ) {
         
         // Only add combinations to the pool that begins with the
