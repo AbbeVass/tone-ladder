@@ -5,11 +5,11 @@ import Settings from './pages/Settings.tsx';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/tone-ladder'>
       <Routes>
-        <Route path="tone-ladder/*" element={<NotFound />} />
-        <Route path="tone-ladder" element={<Home />} />
-        <Route path="tone-ladder/settings" element={<Settings />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
