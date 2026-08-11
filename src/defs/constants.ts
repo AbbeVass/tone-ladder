@@ -1,5 +1,5 @@
-export const TONE_LADDER = [5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1];
-//export const TONE_LADDER = ["E", "F", "G", "A", "B", "C", "D", "E", "F", "G", "A"];
+export const TONE_LADDER: (number | string)[] = [5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1];
+//export const TONE_LADDER: (number | string)[] = ["E", "F", "G", "A", "B", "C", "D", "E", "F", "G", "A"];
 
 export const LENGTH_LIMITS = {
   min: 4,
