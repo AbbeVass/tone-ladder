@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Button, Center, Box, Flex, Text, Space } from "@mantine/core";
+import { Button, Center, Box, Flex, Text, Space, ActionIcon, Tooltip, Code } from "@mantine/core";
+import { IoCodeDownloadOutline } from "react-icons/io5";
 import "../styles/svg.css";
 import { TEXT_COLOR } from "../defs/constants";
-import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets } from "../defs/functions";
+import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets, downloadStoredObjects } from "../defs/functions";
 import { generateMelody } from "../defs/generateMelody";
 import StaircaseSvg from "../components/StaircaseSvg";
 import ToneLadderSvg from "../components/ToneLadderSvg";
@@ -69,6 +70,39 @@ export default function Home() {
           >
             {getActivePreset(getStoredSettingsPresets(), SETTINGS)}
           </Text>
+
+          {/* Download button */}
+          <Tooltip
+            w={200}
+            multiline
+            withArrow
+            label={
+              <>
+                Ladda ned debug-data från localStorage: {' '}
+                <Code color={TEXT_COLOR}>
+                  &#123;settings, melody, settingsPresets&#125;
+                </Code>
+              </>
+            }
+          >
+            <a
+              id="downloadAnchor"
+              style={{
+                position: "fixed",
+                bottom: 20,
+                right: 20
+              }}
+            >
+              <ActionIcon
+                size={"xl"}
+                radius={"xl"}
+                variant="outline"
+                onClick={() => downloadStoredObjects("downloadAnchor")}
+              >
+                <IoCodeDownloadOutline size={"30"}/>
+              </ActionIcon>
+            </a>
+          </Tooltip>
         </Center>
       </Box>
     </Flex>
