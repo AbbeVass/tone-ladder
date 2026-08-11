@@ -1,10 +1,7 @@
-import type { Settings } from "../interfaces/Settings.interface";
+import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
 import { TONE_COMBINATIONS } from "./toneCombinations";
 
-export const SETTINGS_PRESETS: {
-  label: string,
-  settings: Settings
-}[] = [
+export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     label: "Test",
     settings: {

@@ -8,6 +8,11 @@ the top left corner of the window */
   }
 }
 
+/* Make the input success text more visible */
+.mantine-TextInput-success {
+  color: var(--mantine-color-green-5);
+}
+
 /* Border color of each section */
 .mantine-Fieldset-root {
   border-color: var(--mantine-color-gray-1);

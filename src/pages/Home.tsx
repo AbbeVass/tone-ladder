@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Center, Box, Flex, Text, Space } from "@mantine/core";
 import "../styles/svg.css";
 import { TEXT_COLOR } from "../defs/constants";
-import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset } from "../defs/functions";
+import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets } from "../defs/functions";
 import { generateMelody } from "../defs/generateMelody";
 import StaircaseSvg from "../components/StaircaseSvg";
 import ToneLadderSvg from "../components/ToneLadderSvg";
@@ -67,7 +67,7 @@ export default function Home() {
           <Text
             size="xl"
           >
-            {getActivePreset(SETTINGS)}
+            {getActivePreset(getStoredSettingsPresets(), SETTINGS)}
           </Text>
         </Center>
       </Box>

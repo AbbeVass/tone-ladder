@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
-import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect } from "@mantine/core";
+import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip } from "@mantine/core";
 import "../styles/Settings.css";
 import type { Settings } from "../interfaces/Settings.interface";
 import { TONE_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL } from "../defs/constants";
-import { getStoredSettings, getActivePreset, storeSettings } from "../defs/functions";
+import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets, storeSettingsPreset } from "../defs/functions";
 import { TONE_COMBINATIONS } from "../defs/toneCombinations";
-import { SETTINGS_PRESETS } from "../defs/settingsPresets";
+import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
 
 export default function Settings() {
   document.title += " - Inställningar";
 
   const [settings, setSettings] = useState<Settings>(getStoredSettings());
-  const [selectedPreset, setSelectedPreset] = useState<string>(getActivePreset(settings));
+  const [settingsPresets, setSettingsPresets] = useState<SettingsPreset[]>(getStoredSettingsPresets());
+  const [selectedPreset, setSelectedPreset] = useState<string>(getActivePreset(settingsPresets, settings));
+  const [presetLabelInputValue, setPresetLabelInputValue] = useState<string>("");
+  const [presetLabelInputError, setPresetLabelInputError] = useState<string>("");
+  const [presetLabelInputSuccess, setPresetLabelInputSuccess] = useState<string>("");
 
   useEffect(() => {
     storeSettings(settings);
-    setSelectedPreset(getActivePreset(settings));
+    setSelectedPreset(getActivePreset(settingsPresets, settings));
+    setPresetLabelInputError("");
+    setPresetLabelInputSuccess("");
   }, [settings]);
 
   /**
@@ -23,6 +29,48 @@ export default function Settings() {
    */
   function getSettingsClone(): Settings {
     return JSON.parse(JSON.stringify(settings));
+  }
+
+  /**
+   * Stores the current settings and updates the settings presets array (`settingsPreset`)
+   * if a unique label (name) is provided and the settings doesn't already exist as a preset.
+   */
+  function saveSettingsAsPreset(): void {
+
+    // Check that the label input isn't empty
+    if (!presetLabelInputValue) {
+      setPresetLabelInputError("Paketet behöver ett namn");
+    }
+
+    // Check that the label isn't the label for custom settings
+    else if (presetLabelInputValue === CUSTOM_PRESET_LABEL) {
+      setPresetLabelInputError("Välj ett annat namn");
+    }
+
+    // Check that the new label is unique
+    else if (settingsPresets.map((preset) => {
+        return preset.label;
+      }).includes(presetLabelInputValue)) {
+      setPresetLabelInputError("Det finns redan ett paket med det här namnet");
+    }
+
+    // Check that the settings isn't already stored as a preset
+    else if (settingsPresets.map((preset) => {
+        return JSON.stringify(preset.settings);
+      }).includes(JSON.stringify(settings))) {
+      setPresetLabelInputError("De valda inställningarna finns redan sparade som ett paket");
+    }
+
+    // Store the settings as a new preset and update the loaded presets
+    else {
+      storeSettingsPreset({
+        label: presetLabelInputValue,
+        settings: settings
+      });
+      setSettingsPresets(getStoredSettingsPresets());
+      setPresetLabelInputValue("");
+      setPresetLabelInputSuccess(`Inställningarna är sparade som '${presetLabelInputValue}'`);
+    }
   }
 
   return (
@@ -42,13 +90,51 @@ export default function Settings() {
         wrap="wrap"
       >
         <Fieldset
-          w={300}
+          w={400}
           legend="Färdiga inställningar"
           variant="outline"
         >
+          <Flex
+            gap={5}
+          >
+            <TextInput 
+              label="Spara nuvarande inställningar som paket"
+              placeholder="Paketnamn"
+              value={presetLabelInputValue}
+              error={presetLabelInputError}
+              success={presetLabelInputSuccess}
+              onChange={(event) => {
+                setPresetLabelInputValue(event.currentTarget.value.trim());
+                setPresetLabelInputError("");
+                setPresetLabelInputSuccess("");
+              }}
+            />
+            <Flex
+              align={"end"}
+            >
+              <Tooltip
+                label="Inställningarna sparas som ett nytt paket med det angivna namnet.
+                       Inställningspaketet sparas endast på den här datorn i den här webbläsaren."
+                multiline
+                w={200}
+              >
+                <Button
+                  size="xs"
+                  color={"gray"}
+                  mb={3}
+                  onClick={() =>
+                    saveSettingsAsPreset()
+                  }
+                >
+                  Spara
+                </Button>
+              </Tooltip>
+            </Flex>
+          </Flex>
+          <Space h={"sm"}/>
           <NativeSelect
-            id="settingsPresetSelect"
-            data={SETTINGS_PRESETS.map((set) => {
+            label="Välj ett inställningspaket"
+            data={settingsPresets.map((set) => {
                 return {
                   label: set.label,
                   value: set.label,
@@ -65,7 +151,7 @@ export default function Settings() {
               const value = event.currentTarget.value;
               if (selectedPreset !== value) {
                 setSelectedPreset(value);
-                for (const set of SETTINGS_PRESETS) {
+                for (const set of settingsPresets) {
                   if (set.label === value) {
                     setSettings(set.settings);
                   }

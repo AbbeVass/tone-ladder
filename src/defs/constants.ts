@@ -9,7 +9,9 @@ export const LENGTH_LIMITS = {
 export const TEXT_COLOR = getComputedStyle(document.documentElement)
   .getPropertyValue('--mantine-color-gray-1');
 
+// Local storage keys
 export const SETTINGS_STORAGE_KEY = "settings";
+export const SETTINGS_PRESETS_STORAGE_KEY = "settingsPresets";
 export const MELODY_STORAGE_KEY = "melody";
 
 export const CUSTOM_PRESET_LABEL = "Anpassad";

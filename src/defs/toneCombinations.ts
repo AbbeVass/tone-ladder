@@ -1,4 +1,4 @@
-export const TONE_COMBINATIONS = [
+export const TONE_COMBINATIONS: number[][] = [
   [2, 3],
   [9, 10],
   [0, 3],
