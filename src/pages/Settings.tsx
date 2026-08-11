@@ -169,13 +169,16 @@ export default function Settings() {
             clearable
             withAlignedLabels
             data={TONE_COMBINATIONS.map((combination) => {
-              return {
-                value: combination.join(","),
-                label: combination.map((index) => {
-                  return TONE_LADDER[index]
-                  }).join(" - ")
-              };
-            })}
+                return {
+                  value: combination.join(","),
+                  label: combination.map((index) => {
+                      return TONE_LADDER[index]
+                    }).join(" - ") + (combination.filter((index) => {
+                      return index >= 7;
+                    }).length > 0 ? " (hög)" : "")
+                };
+              }).sort((a, b) => a.label.localeCompare(b.label))
+            }
             value={settings.toneCombinationsPool.map((combination) => {
               return combination.join(",");
             })}
@@ -191,7 +194,7 @@ export default function Settings() {
 
         <Fieldset
           w={300}
-          legend="Maximal tonskillnad"
+          legend="Maximalt intervallsprång"
           variant="outline"
         >
           <Slider

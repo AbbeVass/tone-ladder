@@ -37,3 +37,8 @@ the top left corner of the window */
 .mantine-Slider-markLabel {
   color: var(--mantine-color-gray-1)
 }
+
+/* Control the background color of the multi select */
+.mantine-MultiSelect-input {
+  background-color: var(--mantine-color-dark-4);
+}
