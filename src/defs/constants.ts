@@ -17,7 +17,7 @@ export const CUSTOM_PRESET_LABEL = "Anpassad";
 // Staircase SVG
 export const STAIRCASE_STEP_WIDTH = 20;
 export const STEP_HEIGHT = 30;
-export const THICKNESS = 3;
-export const GAP = 3.5;
+export const THICKNESS = 2;
+export const GAP = 6;
 export const STAIRCASE_SVG_WIDTH = TONE_LADDER.length * STAIRCASE_STEP_WIDTH + THICKNESS;
 export const SVG_HEIGHT = TONE_LADDER.length * STEP_HEIGHT + THICKNESS;
