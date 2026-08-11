@@ -12,13 +12,28 @@ export function storeSettings(settings: Settings): void {
 }
 
 /**
- * @returns settings stored in localStorage or the first preset if there's nothing stored
+ * @returns settings stored in localStorage or the first preset if there's nothing stored or if the settings are in an old format
  */
 export function getStoredSettings(): Settings {
   const storedSettings = localStorage.getItem(SETTINGS_STORAGE_KEY);
-  return storedSettings ?
-    JSON.parse(storedSettings) :
-    SETTINGS_PRESETS[0].settings;
+  if (storedSettings) {
+    const settingsObject = JSON.parse(storedSettings)
+    if (
+      settingsObject &&
+      typeof settingsObject === "object" &&
+      typeof settingsObject.startTone === "object" &&
+      typeof settingsObject.startTone?.random === "boolean" &&
+      typeof settingsObject.startTone?.index === "number" &&
+      Array.isArray(settingsObject.toneCombinationsPool) &&
+      typeof settingsObject.melodyLength === "object" &&
+      typeof settingsObject.melodyLength?.random === "boolean" &&
+      typeof settingsObject.melodyLength?.length === "number" &&
+      typeof settingsObject.maxToneDiff === "number"
+    ) {
+      return settingsObject as Settings;
+    }
+  }
+  return SETTINGS_PRESETS[0].settings;
 }
 
 /**
