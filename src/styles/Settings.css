@@ -47,3 +47,12 @@ the top left corner of the window */
 .mantine-MultiSelect-input {
   background-color: var(--mantine-color-dark-4);
 }
+
+/* Render arrow characters as text-style symbols instead of emoji */
+.mantine-MultiSelect-input,
+.mantine-MultiSelect-values,
+.mantine-MultiSelect-option,
+.mantine-MultiSelect-pill {
+  font-family: "Segoe UI Symbol", "Apple Symbols", "Noto Sans Symbols 2", "Symbola", sans-serif;
+  font-variant-emoji: text;
+}

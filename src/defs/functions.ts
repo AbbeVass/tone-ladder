@@ -1,6 +1,6 @@
 import type { Settings } from "../interfaces/Settings.interface";
 import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
-import { CUSTOM_PRESET_LABEL, MELODY_STORAGE_KEY, SETTINGS_PRESETS_STORAGE_KEY, SETTINGS_STORAGE_KEY } from "./constants";
+import { CUSTOM_PRESET_LABEL, MELODY_STORAGE_KEY, SETTINGS_PRESETS_STORAGE_KEY, SETTINGS_STORAGE_KEY, TONAL_LADDER } from "./constants";
 import { SETTINGS_PRESETS } from "./settingsPresets";
 
 /**
@@ -145,6 +145,47 @@ export function getActivePreset(presets: SettingsPreset[], settings: Settings): 
     }
   };
   return CUSTOM_PRESET_LABEL;
+}
+
+/**
+ * Convert the tone indices of a combination to a string with all tones and arrows
+ * in between that shows their relation to each other.
+ * If it's a combination with 2 tones and at least one of the tones is one of the
+ * 4 highest on the tonal ladder, then a mark clarifying that will be added to the end.
+ * @param comb the tone combination to create a label for
+ * @returns the label as a string
+ */
+export function getCombinationLabel(comb: number[]): string {
+  let label = TONAL_LADDER[comb[0]] as string;
+
+  for (let i = 1; i < comb.length; i++) {
+
+    // If the next tone is higher
+    if (comb[i-1] < comb[i]) {
+      label += " ↗ " + TONAL_LADDER[comb[i]];
+    }
+
+    // If the next tone is lower
+    else if (comb[i-1] > comb[i]) {
+      label += " ↘ " + TONAL_LADDER[comb[i]];
+    }
+
+    // If the next tone is the same
+    else {
+      label += " → " + TONAL_LADDER[comb[i]];
+    }
+  }
+  
+  // Mark 2-tone-combinaitons that includes a high tone
+  if (comb.length <= 2
+    && comb.filter((index) => {
+      return index >= 7;
+    }).length > 0)
+  {
+    label += " (hög)";
+  }
+
+  return label;
 }
 
 /**

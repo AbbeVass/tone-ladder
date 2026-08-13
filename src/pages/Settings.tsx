@@ -3,7 +3,7 @@ import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Butt
 import "../styles/Settings.css";
 import type { Settings } from "../interfaces/Settings.interface";
 import { TONAL_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL } from "../defs/constants";
-import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets, storeSettingsPreset } from "../defs/functions";
+import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets, storeSettingsPreset, getCombinationLabel } from "../defs/functions";
 import { TONE_COMBINATIONS } from "../defs/toneCombinations";
 import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
 
@@ -257,11 +257,7 @@ export default function Settings() {
             data={TONE_COMBINATIONS.map((combination) => {
                 return {
                   value: combination.join(","),
-                  label: combination.map((index) => {
-                      return TONAL_LADDER[index]
-                    }).join(" - ") + (combination.filter((index) => {
-                      return index >= 7;
-                    }).length > 0 ? " (hög)" : "")
+                  label: getCombinationLabel(combination)
                 };
               }).sort((a, b) => a.label.localeCompare(b.label))
             }
