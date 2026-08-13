@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip } from "@mantine/core";
 import "../styles/Settings.css";
 import type { Settings } from "../interfaces/Settings.interface";
-import { TONE_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL } from "../defs/constants";
+import { TONAL_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL } from "../defs/constants";
 import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets, storeSettingsPreset } from "../defs/functions";
 import { TONE_COMBINATIONS } from "../defs/toneCombinations";
 import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
@@ -181,10 +181,10 @@ export default function Settings() {
             thumbSize={20}
             mb={10}
             min={0}
-            max={TONE_LADDER.length - 1}
+            max={TONAL_LADDER.length - 1}
             step={1}
-            label={(value) => TONE_LADDER[value]}
-            marks={TONE_LADDER.map((tone, i) => {
+            label={(value) => TONAL_LADDER[value]}
+            marks={TONAL_LADDER.map((tone, i) => {
               return {value: i, label: tone};
             })}
             value={settings.startTone.index}
@@ -258,7 +258,7 @@ export default function Settings() {
                 return {
                   value: combination.join(","),
                   label: combination.map((index) => {
-                      return TONE_LADDER[index]
+                      return TONAL_LADDER[index]
                     }).join(" - ") + (combination.filter((index) => {
                       return index >= 7;
                     }).length > 0 ? " (hög)" : "")
@@ -287,9 +287,9 @@ export default function Settings() {
             thumbSize={20}
             mb={10}
             min={1}
-            max={TONE_LADDER.length - 1}
+            max={TONAL_LADDER.length - 1}
             step={1}
-            marks={Array.from({ length: TONE_LADDER.length - 1 }, (_, i) => {
+            marks={Array.from({ length: TONAL_LADDER.length - 1 }, (_, i) => {
               const value = i + 1;
               return { value, label: value };
             })}

@@ -1,5 +1,5 @@
 import type { Settings } from "../interfaces/Settings.interface";
-import { LENGTH_LIMITS, TONE_LADDER } from "./constants";
+import { LENGTH_LIMITS, TONAL_LADDER } from "./constants";
 
 /**
  * Generate a new melody from the rules set by `settings`.
@@ -16,7 +16,7 @@ export function generateMelody(settings: Settings): number[] {
 
   // Set the start tone index
   let startTone = settings.startTone.random ?
-    Math.floor(Math.random() * TONE_LADDER.length) :
+    Math.floor(Math.random() * TONAL_LADDER.length) :
     settings.startTone.index;
 
   // Add combinations and tones until the melody is its set length
@@ -32,7 +32,7 @@ export function generateMelody(settings: Settings): number[] {
       // that each tone in the combination is within the maximum
       // range of the previous tone.
       if (comb.filter((tone) => {
-          return tone >= 0 && tone < TONE_LADDER.length;
+          return tone >= 0 && tone < TONAL_LADDER.length;
         }).length === comb.length
         && comb.length > 1
         && comb.slice(1).filter((tone, i) => {
@@ -87,7 +87,7 @@ export function generateMelody(settings: Settings): number[] {
         // melody complete, then add a single tone within the maximium range
         // of the last tone.
         const min = Math.max(latestTone - settings.maxToneDiff, 0);
-        const max = Math.min(latestTone + settings.maxToneDiff, TONE_LADDER.length - 1);
+        const max = Math.min(latestTone + settings.maxToneDiff, TONAL_LADDER.length - 1);
         const randomTone = Math.floor(Math.random() * (max - min + 1)) + min;
         melody.push(randomTone);
       }

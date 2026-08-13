@@ -1,5 +1,5 @@
 import {
-  TONE_LADDER,
+  TONAL_LADDER,
   TEXT_COLOR,
   STAIRCASE_STEP_WIDTH,
   STEP_HEIGHT,
@@ -17,10 +17,10 @@ export default function StaircaseSvg() {
       viewBox={`0 0 ${STAIRCASE_SVG_WIDTH} ${SVG_HEIGHT}`}
       preserveAspectRatio="xMinYMid meet"
     >
-      {Array.from(TONE_LADDER, (tone, i) => {
+      {Array.from(TONAL_LADDER, (tone, i) => {
 
         const x = STAIRCASE_STEP_WIDTH * i;
-        const y = STEP_HEIGHT * TONE_LADDER.length - i * STEP_HEIGHT;
+        const y = STEP_HEIGHT * TONAL_LADDER.length - i * STEP_HEIGHT;
 
         return (
           <g key={i}>

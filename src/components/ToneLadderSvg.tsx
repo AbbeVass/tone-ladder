@@ -1,5 +1,5 @@
 import {
-  TONE_LADDER,
+  TONAL_LADDER,
   TEXT_COLOR,
   STEP_HEIGHT,
   THICKNESS,
@@ -24,7 +24,7 @@ export default function ToneLadderSvg({ displayLadder, stepWidth = 50 }: ToneLad
       {Array.from(displayLadder, (tone_index, i) => {
 
         const x = stepWidth * i + (TONE_LADDER_SVG_WIDTH - stepWidth * displayLadder.length) / 2;
-        const y = STEP_HEIGHT * TONE_LADDER.length - tone_index * STEP_HEIGHT;
+        const y = STEP_HEIGHT * TONAL_LADDER.length - tone_index * STEP_HEIGHT;
 
         return (
           <g key={i}>
@@ -37,7 +37,7 @@ export default function ToneLadderSvg({ displayLadder, stepWidth = 50 }: ToneLad
               fontSize="20px"
               fontWeight="bold"
             >
-              {TONE_LADDER[tone_index]}
+              {TONAL_LADDER[tone_index]}
             </text>
           </g>
         );
