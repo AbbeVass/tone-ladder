@@ -3,11 +3,14 @@ import { LENGTH_LIMITS, TONAL_LADDER } from "./constants";
 
 /**
  * Generate a new melody from the rules set by `settings`.
- * @param settings 
- * @returns an array of indices on the tone ladder
+ * UPDATE: The same combination will not be used multiple times after
+ * each other repeatedly without anything else in between.
+ * @param settings the settings object that will control the generating process
+ * @returns an array of indices on the tonal ladder
  */
 export function generateMelody(settings: Settings): number[] {
   let melody: number[] = [];
+  let lastUsedCombination: number[] = [];
 
   // Set the melody length
   let melodyLenght = settings.melodyLength.random ?
@@ -27,11 +30,14 @@ export function generateMelody(settings: Settings): number[] {
     // Check which combinations are possible and add them to the pool
     for (const comb of settings.toneCombinationsPool) {
 
-      // Ensure that every tone in the combination is on the tone
-      // ladder, that the combination has more than 1 tone and
-      // that each tone in the combination is within the maximum
+      // Ensure that the same combination is not added twice to the
+      // melody without anything else in between,
+      // that every tone in the combination is on the tonal ladder,
+      // that the combination has more than 1 tone
+      // and that each tone in the combination is within the maximum
       // range of the previous tone.
-      if (comb.filter((tone) => {
+      if (JSON.stringify(comb) !== JSON.stringify(lastUsedCombination)
+        && comb.filter((tone) => {
           return tone >= 0 && tone < TONAL_LADDER.length;
         }).length === comb.length
         && comb.length > 1
@@ -74,6 +80,7 @@ export function generateMelody(settings: Settings): number[] {
       possibleCombinationsPool[randomIndex].forEach((tone) => {
         melody.push(tone);
       });
+      lastUsedCombination = possibleCombinationsPool[randomIndex];
     } else {
       
       // If the melody is empty and no combinations begins with the start tone,
@@ -90,6 +97,7 @@ export function generateMelody(settings: Settings): number[] {
         const max = Math.min(latestTone + settings.maxToneDiff, TONAL_LADDER.length - 1);
         const randomTone = Math.floor(Math.random() * (max - min + 1)) + min;
         melody.push(randomTone);
+        lastUsedCombination = [];
       }
     }
   }

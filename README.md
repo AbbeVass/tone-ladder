@@ -11,7 +11,7 @@ tone-ladder is an educational tool for generating short musical melodies and dis
 The melodies are generated based on a set of rules managed on the settings page (`/tone-ladder/settings`). These rules are as follows:
 - The first tone is either decided by the user or random. If it's random it can be any tone on the tonal ladder.
 - The number of tones in a melody is either decided by the user or random. A melody can be at least 4 tones and at most 15.
-- Tone combinations will be put together to form the melody. The user can choose which combinations are used from the combinations provided in `src/defs/toneCombinations.ts`. More combinations will result in more differing melodies.
+- Tone combinations will be put together to form the melody. The user can choose which combinations are used from the combinations provided in `src/defs/toneCombinations.ts`. The same combination will never repeatedly be used multiple times after each other without anything else in between. More combinations will result in more differing melodies.
 - The maximum difference between two tones in the melody is set by the user. Chosen tone combinations with larger difference than this between its tones will not be used, neither will combinations which first tone is to far of the previous tone.
 - Beginning with the start tone, possible combinations will be randomly picked and added to the melody until it has the decided length.
 - If there's at any point in the generating process not any tone combinations that fit as the next part of the melody, for example if there's no combination that begins with the melody's start tone or if there's only space for a single tone more in the melody, then a single random tone will be added instead that's within the maximum tonal difference.
