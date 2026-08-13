@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Center, Box, Flex, Text, Space, ActionIcon, Tooltip, Code } from "@mantine/core";
 import { IoCodeDownloadOutline } from "react-icons/io5";
 import "../styles/svg.css";
-import { TEXT_COLOR } from "../defs/constants";
+import { STAIRCASE_COLOR, TEXT_COLOR } from "../defs/constants";
 import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets, downloadStoredObjects } from "../defs/functions";
 import { generateMelody } from "../defs/generateMelody";
 import StaircaseSvg from "../components/StaircaseSvg";
@@ -42,7 +42,7 @@ export default function Home() {
           >
             <Button
               size="lg"
-              color="var(--mantine-color-lime-9)"
+              color={STAIRCASE_COLOR}
               onClick={() => {
                 const newMelody = generateMelody(SETTINGS);
                 setMelody(newMelody);

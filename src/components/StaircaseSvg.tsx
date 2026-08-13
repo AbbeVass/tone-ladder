@@ -6,7 +6,8 @@ import {
   THICKNESS,
   GAP,
   STAIRCASE_SVG_WIDTH,
-  SVG_HEIGHT
+  SVG_HEIGHT,
+  STAIRCASE_COLOR
 } from "../defs/constants";
 
 export default function StaircaseSvg() {
@@ -28,14 +29,14 @@ export default function StaircaseSvg() {
               y={y}
               width={STAIRCASE_STEP_WIDTH + THICKNESS}
               height={THICKNESS}
-              fill={TEXT_COLOR}
+              fill={STAIRCASE_COLOR}
             />
             <rect // vertical line
               x={x + STAIRCASE_STEP_WIDTH}
               y={y - STEP_HEIGHT + THICKNESS - 1}
               width={THICKNESS}
               height={STEP_HEIGHT}
-              fill={TEXT_COLOR}
+              fill={STAIRCASE_COLOR}
             />
 
             <text
