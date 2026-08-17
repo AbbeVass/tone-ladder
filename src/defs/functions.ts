@@ -176,13 +176,19 @@ export function getCombinationLabel(comb: number[]): string {
     }
   }
   
-  // Mark 2-tone-combinaitons that includes a high tone
-  if (comb.length <= 2
-    && comb.filter((index) => {
+  // Mark 2-tone-combinaitons with "high" or "low" to distinguish combinations that
+  // otherwise would have the same label
+  if (comb.length === 2) {
+    if (comb.filter((index) => {
       return index >= 7;
-    }).length > 0)
-  {
-    label += " (hög)";
+    }).length === 2) {
+      label += " (hög)";
+    }
+    else if (comb.filter((index) => {
+      return index <= 3;
+    }).length === 2) {
+      label += " (låg)";
+    }
   }
 
   return label;
