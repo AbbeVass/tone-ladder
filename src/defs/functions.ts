@@ -150,8 +150,9 @@ export function getActivePreset(presets: SettingsPreset[], settings: Settings): 
 /**
  * Convert the tone indices of a combination to a string with all tones and arrows
  * in between that shows their relation to each other.
- * If it's a combination with 2 tones and at least one of the tones is one of the
- * 4 highest on the tonal ladder, then a mark clarifying that will be added to the end.
+ * If it's a combination with 2 tones and both of the tones are either among the
+ * 4 highest or 4 lowest on the tonal ladder, which are displayed with the same numbers,
+ * then a mark clarifying their position on the ladder will be added to the end.
  * @param comb the tone combination to create a label for
  * @returns the label as a string
  */
