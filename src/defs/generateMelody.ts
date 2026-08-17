@@ -4,7 +4,9 @@ import { LENGTH_LIMITS, TONAL_LADDER } from "./constants";
 /**
  * Generate a new melody from the rules set by `settings`.
  * UPDATE: The same combination will not be used multiple times after
- * each other repeatedly without anything else in between.
+ * each other repeatedly without anything else in between. A random start
+ * tone will not be fully random and practically means that the melody
+ * will start with one of the tone combinations, but that it's randomly selected.
  * @param settings the settings object that will control the generating process
  * @returns an array of indices on the tonal ladder
  */
@@ -16,11 +18,6 @@ export function generateMelody(settings: Settings): number[] {
   let melodyLenght = settings.melodyLength.random ?
     Math.floor(Math.random() * (LENGTH_LIMITS.max - LENGTH_LIMITS.min - 1) + LENGTH_LIMITS.min) :
     settings.melodyLength.length;
-
-  // Set the start tone index
-  let startTone = settings.startTone.random ?
-    Math.floor(Math.random() * TONAL_LADDER.length) :
-    settings.startTone.index;
 
   // Add combinations and tones until the melody is its set length
   for (let i = 0; melody.length < melodyLenght; i++) {
@@ -48,11 +45,15 @@ export function generateMelody(settings: Settings): number[] {
       ) {
         
         // Only add combinations to the pool that begins with the
-        // start note if nothing's been added to the melody yet.
+        // start tone if it's not random and if nothing's been added
+        // to the melody yet.
         // And make sure that it's not longer than the melody's
         // full length.
         if (melody.length === 0) {
-          if (comb[0] === startTone && comb.length <= melodyLenght) {
+          if (comb.length <= melodyLenght
+            && (settings.startTone.random
+            || comb[0] === settings.startTone.index))
+          {
             possibleCombinationsPool.push(comb);
           }
         } else {
@@ -84,9 +85,16 @@ export function generateMelody(settings: Settings): number[] {
     } else {
       
       // If the melody is empty and no combinations begins with the start tone,
-      // add only the start tone to start of the melody,
+      // add only the start tone to start of the melody.
       if (melody.length === 0) {
-        melody.push(startTone);
+        if (!settings.startTone.random) {
+          melody.push(settings.startTone.index);
+        }
+        
+        // If the start tone is random, then add a random tone.
+        else {
+          melody.push(Math.floor(Math.random() * TONAL_LADDER.length));
+        }
       } else {
 
         // If there aren't any possible combinations to add to the melody,

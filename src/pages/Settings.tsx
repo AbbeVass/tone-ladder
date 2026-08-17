@@ -167,7 +167,7 @@ export default function Settings() {
           variant="outline"
         >
           <Switch
-            label="Slumpmässig"
+            label="Slumpmässig första tonkombination"
             checked={settings.startTone.random}
             onChange={(event) => {
               let _tempSettings = getSettingsClone();
