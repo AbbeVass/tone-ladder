@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip } from "@mantine/core";
+import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip, ActionIcon } from "@mantine/core";
+import { MdOutlineDeleteForever } from "react-icons/md";
 import "../styles/Settings.css";
 import type { Settings } from "../interfaces/Settings.interface";
 import { TONAL_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL } from "../defs/constants";
@@ -300,6 +301,7 @@ export default function Settings() {
       </Flex>
 
       <Center>
+        {/* Home page button */}
         <Button
           className="settings-back-button"
           m={20}
@@ -312,6 +314,34 @@ export default function Settings() {
         >
           Tillbaka
         </Button>
+
+        {/* Clear storage button */}
+        <Tooltip
+          withArrow
+          label={"Radera lokalt sparad data"}
+        >
+          <ActionIcon
+            size={"xl"}
+            radius={"xl"}
+            variant="outline"
+            color="red"
+            style={{
+              position: "fixed",
+              bottom: 20,
+              right: 20
+            }}
+            onClick={() => {
+              // Confirm and clear local storage
+              if (confirm("Är du säker på att du vill radera all sparad information?\nDetta inkluderar dina lokalt sparade inställningspaket.")) {
+                localStorage.clear();
+                location.reload();
+                alert("Din lokala data har raderats.");
+              }
+            }}
+          >
+            <MdOutlineDeleteForever size={"30"}/>
+          </ActionIcon>
+        </Tooltip>
       </Center>
     </>
   );

@@ -24,7 +24,7 @@ This preoject is only available through [github-pages](https://abbevass.github.i
 
 The website stores the users current settings, latest generated melody and saved settings packages for user convenience. All this data is stored locally in the browser and does not get shared with anyone. The website does not store any further history of melodies or settings, besides if you save your settings as a settings package or download the stored data by clicking the button for downloading debug data on the home page (`/tone-ladder/`).
 
-If you wish to delete all stored data, you can do this by deleting the browsing data for this website.
+If you wish to delete all stored data, you can do this by clicking the red icon in the bottom corner of the settings page and confirming the prompt that appears.
 
 ## AI declaration
 
