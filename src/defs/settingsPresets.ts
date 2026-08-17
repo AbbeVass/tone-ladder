@@ -97,7 +97,7 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
     }
   },
   {
-    "label": "Triads Step 2",
+    "label": "Triads step 2",
     "settings": {
       "startTone": {
         "random": true,
@@ -178,7 +178,7 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
     }
   },
   {
-    "label": "Triads Step 3",
+    "label": "Triads step 3",
     "settings": {
       "startTone": {
         "random": true,

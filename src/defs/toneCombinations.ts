@@ -11,6 +11,8 @@ export const TONE_COMBINATIONS: number[][] = [
   [5, 7],
   [7, 5],
   [4, 5],
+  [3, 5],
+  [5, 3],
   [5, 6],
   [6, 7],
   [7, 6],
