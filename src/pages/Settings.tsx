@@ -91,48 +91,10 @@ export default function Settings() {
         wrap="wrap"
       >
         <Fieldset
-          w={400}
+          w={300}
           legend="Färdiga inställningar"
           variant="outline"
         >
-          <Flex
-            gap={5}
-          >
-            <TextInput 
-              label="Spara nuvarande inställningar som paket"
-              placeholder="Paketnamn"
-              value={presetLabelInputValue}
-              error={presetLabelInputError}
-              success={presetLabelInputSuccess}
-              onChange={(event) => {
-                setPresetLabelInputValue(event.currentTarget.value.trim());
-                setPresetLabelInputError("");
-                setPresetLabelInputSuccess("");
-              }}
-            />
-            <Flex
-              align={"end"}
-            >
-              <Tooltip
-                label="Inställningarna sparas som ett nytt paket med det angivna namnet.
-                       Inställningspaketet sparas endast på den här datorn i den här webbläsaren."
-                multiline
-                w={200}
-              >
-                <Button
-                  size="xs"
-                  color={"gray"}
-                  mb={3}
-                  onClick={() =>
-                    saveSettingsAsPreset()
-                  }
-                >
-                  Spara
-                </Button>
-              </Tooltip>
-            </Flex>
-          </Flex>
-          <Space h={"sm"}/>
           <NativeSelect
             label="Välj ett inställningspaket"
             data={settingsPresets.map((set) => {
@@ -297,6 +259,50 @@ export default function Settings() {
               setSettings(_tempSettings);
             }}
           />
+        </Fieldset>
+
+        <Fieldset
+          w={400}
+          legend="Spara inställningar"
+          variant="outline"
+        >
+          <Flex
+            gap={5}
+          >
+            <TextInput 
+              label="Spara nuvarande inställningar som paket"
+              placeholder="Paketnamn"
+              value={presetLabelInputValue}
+              error={presetLabelInputError}
+              success={presetLabelInputSuccess}
+              onChange={(event) => {
+                setPresetLabelInputValue(event.currentTarget.value.trim());
+                setPresetLabelInputError("");
+                setPresetLabelInputSuccess("");
+              }}
+            />
+            <Flex
+              align={"end"}
+            >
+              <Tooltip
+                label="Inställningarna sparas som ett nytt paket med det angivna namnet.
+                       Inställningspaketet sparas endast på den här datorn i den här webbläsaren."
+                multiline
+                w={200}
+              >
+                <Button
+                  size="xs"
+                  color={"gray"}
+                  mb={3}
+                  onClick={() =>
+                    saveSettingsAsPreset()
+                  }
+                >
+                  Spara
+                </Button>
+              </Tooltip>
+            </Flex>
+          </Flex>
         </Fieldset>
       </Flex>
 
