@@ -76,7 +76,9 @@ export default function Settings() {
 
   return (
     <>
-      <Center>
+      <Center
+        className="header"
+      >
         <Title
           m={20}
         >
