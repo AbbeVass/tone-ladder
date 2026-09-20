@@ -6,10 +6,8 @@ export const LENGTH_LIMITS = {
   max: 15
 };
 
-export const TEXT_COLOR = getComputedStyle(document.documentElement)
-  .getPropertyValue('--mantine-color-gray-1');
-export const STAIRCASE_COLOR = getComputedStyle(document.documentElement)
-  .getPropertyValue('--mantine-color-lime-9');
+export const TEXT_COLOR = "#f1f3f5"; // --mantine-color-gray-1
+export const STAIRCASE_COLOR = "#5c940d"; // --mantine-color-lime-9
 
 // Local storage keys
 export const SETTINGS_STORAGE_KEY = "settings";

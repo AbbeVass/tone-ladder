@@ -251,7 +251,7 @@ export default function Settings() {
           </Button>
           <MultiSelect 
             label="Valda kombinationer kommer att användas för att skapa melodier."
-            chevronColor="var(--mantine-color-dark-0)"
+            chevronColor="#C9C9C9"
             floatingHeight="viewport"
             clearable
             withAlignedLabels
