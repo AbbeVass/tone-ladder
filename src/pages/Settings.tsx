@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip, ActionIcon } from "@mantine/core";
+import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip, ActionIcon, Text } from "@mantine/core";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import "../styles/Settings.css";
 import type { Settings } from "../interfaces/Settings.interface";
@@ -197,10 +197,16 @@ export default function Settings() {
         </Fieldset>
 
         <Fieldset
-          w={500}
+          w={600}
           legend="Tonkombinationer"
           variant="outline"
         >
+          <Text
+            size="md"
+            mb={10}
+          >
+            Valda kombinationer kommer att användas för att skapa melodier.
+          </Text>
           <Button
             size="sm"
             color="gray"
@@ -214,26 +220,55 @@ export default function Settings() {
             Markera alla
           </Button>
           <MultiSelect 
-            label="Valda kombinationer kommer att användas för att skapa melodier."
+            label="Tvåtonskombinationer"
             chevronColor="#C9C9C9"
             floatingHeight="viewport"
             clearable
             withAlignedLabels
-            data={TONE_COMBINATIONS.map((combination) => {
+            data={TONE_COMBINATIONS.filter(comb => comb.length == 2).map((combination) => {
                 return {
                   value: combination.join(","),
                   label: getCombinationLabel(combination)
                 };
               }).sort((a, b) => a.label.localeCompare(b.label))
             }
-            value={settings.toneCombinationsPool.map((combination) => {
+            value={settings.toneCombinationsPool.filter(comb => comb.length == 2).map((combination) => {
               return combination.join(",");
             })}
             onChange={(value) => {
               let _tempSettings = getSettingsClone();
-              _tempSettings.toneCombinationsPool = value.map((v) => {
-                return v.split(",").map(Number);
-              });
+              _tempSettings.toneCombinationsPool = _tempSettings.toneCombinationsPool
+                .filter(comb => comb.length > 2)
+                .concat(value.map((v) => {
+                  return v.split(",").map(Number);
+              }));
+              setSettings(_tempSettings);
+            }}
+          />
+          <Space h="xs" />
+          <MultiSelect 
+            label="Tretonskombinationer"
+            chevronColor="#C9C9C9"
+            floatingHeight="viewport"
+            clearable
+            withAlignedLabels
+            data={TONE_COMBINATIONS.filter(comb => comb.length > 2).map((combination) => {
+                return {
+                  value: combination.join(","),
+                  label: getCombinationLabel(combination)
+                };
+              }).sort((a, b) => a.label.localeCompare(b.label))
+            }
+            value={settings.toneCombinationsPool.filter(comb => comb.length > 2).map((combination) => {
+              return combination.join(",");
+            })}
+            onChange={(value) => {
+              let _tempSettings = getSettingsClone();
+              _tempSettings.toneCombinationsPool = _tempSettings.toneCombinationsPool
+                .filter(comb => comb.length == 2)
+                .concat(value.map((v) => {
+                  return v.split(",").map(Number);
+              }));
               setSettings(_tempSettings);
             }}
           />
