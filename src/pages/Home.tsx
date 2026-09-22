@@ -6,7 +6,7 @@ import { STAIRCASE_COLOR, TEXT_COLOR } from "../defs/constants";
 import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets, downloadStoredObjects } from "../defs/functions";
 import { generateMelody } from "../defs/generateMelody";
 import StaircaseSvg from "../components/StaircaseSvg";
-import ToneLadderSvg from "../components/ToneLadderSvg";
+import TonalLadderSvg from "../components/TonalLadderSvg";
 import CreditsFooter from "../components/CreditsFooter";
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
           />
         </Box>
         <Box className="tone-ladder-container">
-          <ToneLadderSvg
+          <TonalLadderSvg
             displayLadder={melody}
             stepWidth={TONE_LADDER_STEP_WIDTH}
             helpLines={SETTINGS.helpLines}

@@ -9,19 +9,19 @@ import {
   SVG_HEIGHT
 } from "../defs/constants";
 
-type ToneLadderSvgProps = {
+type TonalLadderSvgProps = {
   displayLadder: number[]
   stepWidth?: number
   highlightedTones?: number[]
   helpLines?: number[]
 }
 
-export default function ToneLadderSvg({
+export default function TonalLadderSvg({
     displayLadder,
     stepWidth = 50,
     highlightedTones = [],
     helpLines = []
-  }: ToneLadderSvgProps)
+  }: TonalLadderSvgProps)
 {
   const TONE_LADDER_SVG_WIDTH = displayLadder.length * stepWidth + THICKNESS;
   
