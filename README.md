@@ -4,6 +4,10 @@ Copyright (C) 2026 Abbe Andersson Vass
 
 *Made in collaboration with Anna Andersson Vass*
 
+## Support tone-ladder
+
+[<img src="./public/bmc-button.png" width="200">](https://www.buymeacoffee.com/abbevass)
+
 ## Description
 
 tone-ladder is an educational tool for generating short musical melodies and displaying them on a tonal ladder to help practice tonal relationships. As visual guidance, the complete tonal ladder is displayed as a staircase next to the generated melodies.

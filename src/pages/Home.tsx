@@ -7,6 +7,7 @@ import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getSt
 import { generateMelody } from "../defs/generateMelody";
 import StaircaseSvg from "../components/StaircaseSvg";
 import ToneLadderSvg from "../components/ToneLadderSvg";
+import CreditsFooter from "../components/CreditsFooter";
 
 export default function Home() {
   const TONE_LADDER_STEP_WIDTH = 50;
@@ -32,7 +33,7 @@ export default function Home() {
       </Box>
       
       <Box
-        m={"3vh 3vw"}
+        m={"1vh 3vw"}
       >
         <Center>
           <Flex
@@ -105,6 +106,7 @@ export default function Home() {
           </Tooltip>
         </Center>
       </Box>
+      <CreditsFooter />
     </Flex>
   );
 }
