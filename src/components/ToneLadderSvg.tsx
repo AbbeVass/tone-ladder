@@ -1,6 +1,8 @@
 import {
   TONAL_LADDER,
   TEXT_COLOR,
+  STAIRCASE_COLOR,
+  HIGHLIGHT_COLOR,
   STEP_HEIGHT,
   THICKNESS,
   GAP,
@@ -10,9 +12,17 @@ import {
 type ToneLadderSvgProps = {
   displayLadder: number[]
   stepWidth?: number
+  highlightedTones?: number[]
+  helpLines?: number[]
 }
 
-export default function ToneLadderSvg({ displayLadder, stepWidth = 50 }: ToneLadderSvgProps) {
+export default function ToneLadderSvg({
+    displayLadder,
+    stepWidth = 50,
+    highlightedTones = [],
+    helpLines = []
+  }: ToneLadderSvgProps)
+{
   const TONE_LADDER_SVG_WIDTH = displayLadder.length * stepWidth + THICKNESS;
   
   return (
@@ -33,13 +43,27 @@ export default function ToneLadderSvg({ displayLadder, stepWidth = 50 }: ToneLad
               y={y - GAP * THICKNESS}
               textAnchor="middle"
               dominantBaseline="middle"
-              fill={TEXT_COLOR}
+              fill={highlightedTones.includes(tone_index) ? HIGHLIGHT_COLOR : TEXT_COLOR}
               fontSize="20px"
               fontWeight="bold"
             >
               {TONAL_LADDER[tone_index]}
             </text>
           </g>
+        );
+      })}
+      {helpLines.map((tone_index, i) => {
+        const x = 0;
+        const y = STEP_HEIGHT * TONAL_LADDER.length - tone_index * STEP_HEIGHT;
+        return (
+          <rect
+            key={i}
+            x={x}
+            y={y}
+            width={TONE_LADDER_SVG_WIDTH}
+            height={THICKNESS}
+            fill={STAIRCASE_COLOR}
+          />
         );
       })}
     </svg>

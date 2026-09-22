@@ -22,12 +22,17 @@ export default function Home() {
     >
       <Box className="svg-container">
         <Box className="staircase-container">
-          <StaircaseSvg />
+          <StaircaseSvg 
+            helpLines={SETTINGS.helpLines}
+            highlightedTones={SETTINGS.highlightedTones}
+          />
         </Box>
         <Box className="tone-ladder-container">
           <ToneLadderSvg
             displayLadder={melody}
             stepWidth={TONE_LADDER_STEP_WIDTH}
+            helpLines={SETTINGS.helpLines}
+            highlightedTones={SETTINGS.highlightedTones}
           />
         </Box>
       </Box>

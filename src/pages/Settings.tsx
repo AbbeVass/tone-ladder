@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip, ActionIcon, Text, Box } from "@mantine/core";
+import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip, ActionIcon, Text, Box, Checkbox } from "@mantine/core";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import "../styles/Settings.css";
 import type { Settings } from "../interfaces/Settings.interface";
-import { TONAL_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL } from "../defs/constants";
+import { TONAL_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL, HELP_LINES, STAIRCASE_COLOR, HIGHLIGHT_COLOR } from "../defs/constants";
 import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets, storeSettingsPreset, getCombinationLabel } from "../defs/functions";
 import { TONE_COMBINATIONS } from "../defs/toneCombinations";
 import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
@@ -133,11 +133,96 @@ export default function Settings() {
           </Fieldset>
 
           <Fieldset
+            w={200}
+            legend="Hjälplinjer"
+            variant="outline"
+          >
+            {HELP_LINES.map((tone_index) => {
+              return (
+                <Checkbox
+                  key={tone_index}
+                  size="md"
+                  color={STAIRCASE_COLOR}
+                  mt={5}
+                  ml={(tone_index - HELP_LINES[HELP_LINES.length - 1]) * 14}
+                  label={TONAL_LADDER[tone_index]}
+                  checked={settings.helpLines?.includes(tone_index)}
+                  onChange={(event) => {
+                    let _tempSettings = getSettingsClone();
+                    if (event.currentTarget.checked) {
+                      _tempSettings.helpLines = [...(_tempSettings.helpLines || []), tone_index];
+                    } else {
+                      _tempSettings.helpLines = (_tempSettings.helpLines || []).filter((tone) => tone !== tone_index);
+                    }
+                    setSettings(_tempSettings);
+                  }}
+                />
+              );
+            })}
+          </Fieldset>
+
+          <Fieldset
+            legend="Färgade toner"
+            variant="outline"
+          >
+            <Button
+              size="sm"
+              color="gray"
+              mr={10}
+              mb={10}
+              onClick={() => {
+                let _tempSettings = getSettingsClone();
+                _tempSettings.highlightedTones = [...Array(TONAL_LADDER.length).keys()];
+                setSettings(_tempSettings);
+              }}
+            >
+              Markera alla
+            </Button>
+            <Button
+              size="sm"
+              color="gray"
+              mb={10}
+              onClick={() => {
+                let _tempSettings = getSettingsClone();
+                _tempSettings.highlightedTones = [];
+                setSettings(_tempSettings);
+              }}
+            >
+              Avmarkera alla
+            </Button>
+            <Flex
+              gap={10}
+            >
+              {TONAL_LADDER.map((tone, tone_index) => {
+                return (
+                  <Checkbox
+                    key={tone_index}
+                    className="highlight-tones"
+                    color={HIGHLIGHT_COLOR}
+                    label={tone}
+                    checked={settings.highlightedTones?.includes(tone_index)}
+                    onChange={(event) => {
+                      let _tempSettings = getSettingsClone();
+                      if (event.currentTarget.checked) {
+                        _tempSettings.highlightedTones = [...(_tempSettings.highlightedTones || []), tone_index];
+                      } else {
+                        _tempSettings.highlightedTones = (_tempSettings.highlightedTones || []).filter((tone) => tone !== tone_index);
+                      }
+                      setSettings(_tempSettings);
+                    }}
+                  />
+                );
+              })}
+            </Flex>
+          </Fieldset>
+
+          <Fieldset
             w={300}
             legend="Första ton"
             variant="outline"
           >
             <Switch
+              color={STAIRCASE_COLOR}
               label="Slumpmässig första tonkombination"
               checked={settings.startTone.random}
               onChange={(event) => {
@@ -173,6 +258,7 @@ export default function Settings() {
             variant="outline"
           >
             <Switch
+              color={STAIRCASE_COLOR}
               label="Slumpmässigt"
               checked={settings.melodyLength.random}
               onChange={(event) => {
@@ -305,7 +391,6 @@ export default function Settings() {
           </Fieldset>
 
           <Fieldset
-            w={400}
             legend="Spara inställningar"
             variant="outline"
           >

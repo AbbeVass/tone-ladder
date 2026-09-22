@@ -1,16 +1,28 @@
 import {
   TONAL_LADDER,
   TEXT_COLOR,
+  STAIRCASE_COLOR,
+  HIGHLIGHT_COLOR,
   STAIRCASE_STEP_WIDTH,
   STEP_HEIGHT,
   THICKNESS,
   GAP,
   STAIRCASE_SVG_WIDTH,
-  SVG_HEIGHT,
-  STAIRCASE_COLOR
+  SVG_HEIGHT
 } from "../defs/constants";
 
-export default function StaircaseSvg() {
+type StaircaseSvgProps = {
+  highlightedTones?: number[]
+  helpLines?: number[]
+};
+
+export default function StaircaseSvg({
+    highlightedTones = [],
+    helpLines = [3, 5, 7]
+  }: StaircaseSvgProps)
+{
+  const HELP_LINE_GAP = 2 * STAIRCASE_STEP_WIDTH + THICKNESS;
+
   return (
     <svg
       className="staircase-svg"
@@ -44,12 +56,22 @@ export default function StaircaseSvg() {
               y={y - GAP * THICKNESS}
               textAnchor="middle"
               dominantBaseline="middle"
-              fill={TEXT_COLOR}
+              fill={highlightedTones.includes(i) ? HIGHLIGHT_COLOR : TEXT_COLOR}
               fontSize="20px"
               fontWeight="bold"
             >
               {tone}
             </text>
+
+            {helpLines.includes(i) && (
+              <rect
+                x={x + HELP_LINE_GAP}
+                y={y}
+                width={STAIRCASE_SVG_WIDTH - (x + HELP_LINE_GAP)}
+                height={THICKNESS}
+                fill={STAIRCASE_COLOR}
+              />
+            )}
           </g>
         );
       })}

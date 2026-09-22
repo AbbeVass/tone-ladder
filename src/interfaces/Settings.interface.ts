@@ -9,4 +9,6 @@ export interface Settings {
     length: number;
   },
   maxToneDiff: number;
+  highlightedTones?: number[];
+  helpLines?: number[];
 }

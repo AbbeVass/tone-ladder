@@ -27,6 +27,15 @@ the top left corner of the window */
   border-color: var(--mantine-color-gray-1);
 }
 
+/* Stack labels for highlight tones below their checkboxes */
+.highlight-tones .mantine-Checkbox-body {
+  flex-direction: column;
+}
+.highlight-tones .mantine-Checkbox-label {
+  padding-inline-start: 7px;
+  margin-top: 5px;
+}
+
 /* NativeSelect icon */
 .mantine-ComboboxChevron-chevron {
   color: var(--mantine-color-dark-0);

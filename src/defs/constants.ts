@@ -8,6 +8,7 @@ export const LENGTH_LIMITS = {
 
 export const TEXT_COLOR = "#f1f3f5"; // --mantine-color-gray-1
 export const STAIRCASE_COLOR = "#5c940d"; // --mantine-color-lime-9
+export const HIGHLIGHT_COLOR = "#f06595"; // --mantine-color-pink-5
 
 // Local storage keys
 export const SETTINGS_STORAGE_KEY = "settings";
@@ -23,3 +24,5 @@ export const THICKNESS = 2;
 export const GAP = 6;
 export const STAIRCASE_SVG_WIDTH = TONAL_LADDER.length * STAIRCASE_STEP_WIDTH + THICKNESS;
 export const SVG_HEIGHT = TONAL_LADDER.length * STEP_HEIGHT + THICKNESS;
+
+export const HELP_LINES = [7, 5, 3];
