@@ -17,10 +17,10 @@ export interface StaircaseSvgProps {
 };
 
 export default function StaircaseSvg({
-    highlightedTones = [],
-    helpLines = [3, 5, 7]
-  }: StaircaseSvgProps)
-{
+  highlightedTones = [],
+  helpLines = []
+}: StaircaseSvgProps) {
+  
   const HELP_LINE_GAP = 2 * STAIRCASE_STEP_WIDTH + THICKNESS;
 
   return (

@@ -17,12 +17,12 @@ export interface TonalLadderSvgProps {
 }
 
 export default function TonalLadderSvg({
-    displayLadder,
-    stepWidth = 50,
-    highlightedTones = [],
-    helpLines = []
-  }: TonalLadderSvgProps)
-{
+  displayLadder,
+  stepWidth = 50,
+  highlightedTones = [],
+  helpLines = []
+}: TonalLadderSvgProps) {
+  
   const TONE_LADDER_SVG_WIDTH = displayLadder.length * stepWidth + THICKNESS;
   
   return (
