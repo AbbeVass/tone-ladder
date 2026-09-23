@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Button, Center, Box, Flex, Text, Space, ActionIcon, Tooltip, Code } from "@mantine/core";
-import { IoCodeDownloadOutline } from "react-icons/io5";
-import "../styles/svg.css";
-import { STAIRCASE_COLOR, TEXT_COLOR } from "../defs/constants";
-import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets, downloadStoredObjects } from "../defs/functions";
-import { generateMelody } from "../defs/generateMelody";
+import { Button, Center, Box, Flex, Text, Space } from "@mantine/core";
 import StaircaseSvg from "../components/StaircaseSvg";
 import TonalLadderSvg from "../components/TonalLadderSvg";
 import CreditsFooter from "../components/CreditsFooter";
+import { STAIRCASE_COLOR, TEXT_COLOR } from "../defs/constants";
+import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets } from "../defs/functions";
+import { generateMelody } from "../defs/generateMelody";
+import "../styles/svg.css";
 
 export default function Home() {
   const TONE_LADDER_STEP_WIDTH = 50;
@@ -76,39 +75,6 @@ export default function Home() {
           >
             {getActivePreset(getStoredSettingsPresets(), SETTINGS)}
           </Text>
-
-          {/* Download button */}
-          <Tooltip
-            w={200}
-            multiline
-            withArrow
-            label={
-              <>
-                Ladda ned debug-data från localStorage: {' '}
-                <Code color={TEXT_COLOR}>
-                  &#123;settings, melody, settingsPresets&#125;
-                </Code>
-              </>
-            }
-          >
-            <a
-              id="downloadAnchor"
-              style={{
-                position: "fixed",
-                bottom: 20,
-                right: 20
-              }}
-            >
-              <ActionIcon
-                size={"xl"}
-                radius={"xl"}
-                variant="outline"
-                onClick={() => downloadStoredObjects("downloadAnchor")}
-              >
-                <IoCodeDownloadOutline size={"30"}/>
-              </ActionIcon>
-            </a>
-          </Tooltip>
         </Center>
       </Box>
       <CreditsFooter />
