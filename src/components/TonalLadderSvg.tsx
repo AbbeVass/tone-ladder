@@ -9,11 +9,11 @@ import {
   SVG_HEIGHT
 } from "../defs/constants";
 
-type TonalLadderSvgProps = {
-  displayLadder: number[]
-  stepWidth?: number
-  highlightedTones?: number[]
-  helpLines?: number[]
+export interface TonalLadderSvgProps {
+  displayLadder: number[];
+  stepWidth?: number;
+  highlightedTones?: number[];
+  helpLines?: number[];
 }
 
 export default function TonalLadderSvg({

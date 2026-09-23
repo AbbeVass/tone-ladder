@@ -11,9 +11,9 @@ import {
   SVG_HEIGHT
 } from "../defs/constants";
 
-type StaircaseSvgProps = {
-  highlightedTones?: number[]
-  helpLines?: number[]
+export interface StaircaseSvgProps {
+  highlightedTones?: number[];
+  helpLines?: number[];
 };
 
 export default function StaircaseSvg({
