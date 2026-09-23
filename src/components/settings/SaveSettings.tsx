@@ -84,7 +84,7 @@ export default function SaveSettings({
           error={presetLabelInputError}
           success={presetLabelInputSuccess}
           onChange={(event) => {
-            setPresetLabelInputValue(event.currentTarget.value.trim());
+            setPresetLabelInputValue(event.currentTarget.value);
             setPresetLabelInputError("");
             setPresetLabelInputSuccess("");
           }}
@@ -102,9 +102,10 @@ export default function SaveSettings({
               size="xs"
               color={"gray"}
               mb={3}
-              onClick={() =>
-                saveSettingsAsPreset()
-              }
+              onClick={() => {
+                setPresetLabelInputValue(presetLabelInputValue.trim());
+                saveSettingsAsPreset();
+              }}
             >
               Spara
             </Button>
