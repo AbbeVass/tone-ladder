@@ -94,7 +94,7 @@ export default function SaveSettings({
         >
           <Tooltip
             label="Inställningarna sparas som ett nytt paket med det angivna namnet.
-                  Inställningspaketet sparas endast på den här datorn i den här webbläsaren."
+                   Inställningspaketet sparas endast på den här enheten i den här webbläsaren."
             multiline
             w={200}
           >
