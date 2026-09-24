@@ -11,6 +11,7 @@ export default function CreditsFooter() {
     >
       <Text
         size="xs"
+        ta={"center"}
       >
         © {new Date().getFullYear()} <a
           style={{ color: TEXT_COLOR }}
@@ -22,11 +23,13 @@ export default function CreditsFooter() {
       </Text>
       <Text
         size="xs"
+        ta={"center"}
       >
         Gjord i sammarbete med Anna Andersson Vass
       </Text>
       <Text
         size="xs"
+        ta={"center"}
       >
         <a
           style={{ color: TEXT_COLOR }}

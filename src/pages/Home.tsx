@@ -72,6 +72,7 @@ export default function Home() {
         <Center>
           <Text
             size="xl"
+            ta={"center"}
           >
             {getActivePreset(getStoredSettingsPresets(), SETTINGS)}
           </Text>
