@@ -3,6 +3,7 @@ import {
   TEXT_COLOR,
   STAIRCASE_COLOR,
   HIGHLIGHT_COLOR,
+  STAIRCASE_STEP_WIDTH,
   STEP_HEIGHT,
   THICKNESS,
   GAP,
@@ -52,9 +53,11 @@ export default function TonalLadderSvg({
           </g>
         );
       })}
+      
       {helpLines.map((tone_index, i) => {
-        const x = 0;
+        const x = tone_index === TONAL_LADDER.length - 1 ? STAIRCASE_STEP_WIDTH : 0;
         const y = STEP_HEIGHT * TONAL_LADDER.length - tone_index * STEP_HEIGHT;
+        
         return (
           <rect
             key={i}

@@ -25,4 +25,4 @@ export const GAP = 6;
 export const STAIRCASE_SVG_WIDTH = TONAL_LADDER.length * STAIRCASE_STEP_WIDTH + THICKNESS;
 export const SVG_HEIGHT = TONAL_LADDER.length * STEP_HEIGHT + THICKNESS;
 
-export const HELP_LINES = [7, 5, 3];
+export const HELP_LINES = [10, 7, 5, 3, 0];
