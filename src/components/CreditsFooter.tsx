@@ -25,7 +25,13 @@ export default function CreditsFooter() {
         size="xs"
         ta={"center"}
       >
-        Gjord i sammarbete med Anna Andersson Vass
+        Gjord i samarbete med <a
+          style={{ color: TEXT_COLOR }}
+          href="https://www.kau.se/musikhogskolan-ingesund/om-mhi/om-mhi/kontakta-oss/vara-larare/anna-vass"
+          target="_blank"
+        >
+          Anna Andersson Vass
+        </a>
       </Text>
       <Text
         size="xs"
