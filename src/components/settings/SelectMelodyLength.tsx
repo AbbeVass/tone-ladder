@@ -17,7 +17,6 @@ export default function SelectMelodyLength({
     <Fieldset
       w={300}
       legend="Antal toner"
-      variant="outline"
     >
       <Switch
         color={STAIRCASE_COLOR}

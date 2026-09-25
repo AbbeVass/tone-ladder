@@ -17,7 +17,6 @@ export default function SelectMaxToneDiff({
     <Fieldset
       w={300}
       legend="Maximalt intervallsprång"
-      variant="outline"
     >
       <Slider
         thumbSize={20}

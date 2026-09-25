@@ -18,7 +18,6 @@ export default function SelectToneCombinations({
     <Fieldset
       w={600}
       legend="Tonkombinationer"
-      variant="outline"
     >
       <Text
         size="md"

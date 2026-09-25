@@ -7,7 +7,7 @@ export default function CreditsFooter() {
       direction="column"
       align="center"
       gap={2}
-      mb={"1vh"}
+      m={10}
     >
       <Text
         size="xs"

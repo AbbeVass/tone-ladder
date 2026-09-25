@@ -16,12 +16,11 @@ export default function SelectStartTone({
   return (
     <Fieldset
       w={300}
-      legend="Första ton"
-      variant="outline"
+      legend="Startton"
     >
       <Switch
         color={STAIRCASE_COLOR}
-        label="Slumpmässig första tonkombination"
+        label="Slumpmässig startton"
         checked={settings.startTone.random}
         onChange={(event) => {
           let _tempSettings = getSettingsClone();

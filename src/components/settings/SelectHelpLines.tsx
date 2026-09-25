@@ -15,9 +15,9 @@ export default function SelectHelpLines({
 }: SelectHelpLinesProps) {
   return (
     <Fieldset
-      w={200}
+      w={110}
       legend="Hjälplinjer"
-      variant="outline"
+      variant="filled"
     >
       {HELP_LINES.map((tone_index) => {
         return (
@@ -26,7 +26,6 @@ export default function SelectHelpLines({
             size="md"
             color={STAIRCASE_COLOR}
             mt={5}
-            ml={(tone_index - HELP_LINES[HELP_LINES.length - 1]) * 14}
             label={TONAL_LADDER[tone_index]}
             checked={settings.helpLines?.includes(tone_index)}
             onChange={(event) => {

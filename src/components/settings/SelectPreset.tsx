@@ -20,7 +20,6 @@ export default function SelectPreset({
     <Fieldset
       w={300}
       legend="Färdiga inställningar"
-      variant="outline"
     >
       <NativeSelect
         label="Välj ett inställningspaket"

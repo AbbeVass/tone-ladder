@@ -71,7 +71,6 @@ export default function SaveSettings({
   return (
     <Fieldset
       legend="Spara inställningar"
-      variant="outline"
       w={400}
     >
       <Flex

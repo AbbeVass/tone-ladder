@@ -57,6 +57,7 @@ export default function Settings() {
           m={5}
           gap="xs"
           justify="center"
+          align="flex-start"
           wrap="wrap"
         >
           <SelectPreset

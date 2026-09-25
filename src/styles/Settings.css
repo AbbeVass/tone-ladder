@@ -22,8 +22,9 @@ the top left corner of the window */
   color: var(--mantine-color-green-5);
 }
 
-/* Border color of each section */
+/* Color and enchance each section */
 .mantine-Fieldset-root {
+  background-color: var(--mantine-color-indigo-8);
   border-color: var(--mantine-color-gray-1);
 }
 

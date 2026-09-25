@@ -68,7 +68,7 @@ export default function Home() {
             </Button>
           </Flex>
         </Center>
-        <Space h={"md"}/>
+        <Space h={"sm"}/>
         <Center>
           <Text
             size="xl"

@@ -16,7 +16,6 @@ export default function SelectHighlightedTones({
   return (
     <Fieldset
       legend="Färgade toner"
-      variant="outline"
     >
       <Button
         size="sm"
@@ -44,13 +43,14 @@ export default function SelectHighlightedTones({
         Avmarkera alla
       </Button>
       <Flex
-        gap={10}
+        gap={5}
       >
         {TONAL_LADDER.map((tone, tone_index) => {
           return (
             <Checkbox
               key={tone_index}
               className="highlight-tones"
+              size="md"
               color={HIGHLIGHT_COLOR}
               label={tone}
               checked={settings.highlightedTones?.includes(tone_index)}
