@@ -2,7 +2,7 @@
 
 Copyright (C) 2026 Abbe Andersson Vass
 
-*Made in collaboration with Anna Andersson Vass*
+*Made in collaboration with [Anna Andersson Vass](https://www.kau.se/musikhogskolan-ingesund/om-mhi/om-mhi/kontakta-oss/vara-larare/anna-vass)*
 
 ## Support tone-ladder
 
