@@ -1,0 +1,50 @@
+import { Flex, Text } from "@mantine/core";
+import { TEXT_COLOR } from "../defs/constants";
+
+export default function CreditsFooter() {
+  return (
+    <Flex
+      direction="column"
+      align="center"
+      gap={2}
+      m={10}
+    >
+      <Text
+        size="xs"
+        ta={"center"}
+      >
+        © {new Date().getFullYear()} <a
+          style={{ color: TEXT_COLOR }}
+          href="https://github.com/abbevass"
+          target="_blank"
+        >
+          Abbe Andersson Vass
+        </a>
+      </Text>
+      <Text
+        size="xs"
+        ta={"center"}
+      >
+        Gjord i samarbete med <a
+          style={{ color: TEXT_COLOR }}
+          href="https://www.kau.se/musikhogskolan-ingesund/om-mhi/om-mhi/kontakta-oss/vara-larare/anna-vass"
+          target="_blank"
+        >
+          Anna Andersson Vass
+        </a>
+      </Text>
+      <Text
+        size="xs"
+        ta={"center"}
+      >
+        <a
+          style={{ color: TEXT_COLOR }}
+          href="https://www.buymeacoffee.com/abbevass"
+          target="_blank"
+        >
+          Stötta utvecklingen av Tone Ladder 🔗
+        </a>
+      </Text>
+    </Flex>
+  );
+}

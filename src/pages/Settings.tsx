@@ -1,28 +1,32 @@
 import { useEffect, useState } from "react";
-import { Center, Flex, Title, Fieldset, Switch, Slider, Space, MultiSelect, Button, NativeSelect, TextInput, Tooltip, ActionIcon } from "@mantine/core";
-import { MdOutlineDeleteForever } from "react-icons/md";
-import "../styles/Settings.css";
+import { Center, Flex, Title, Button, Box } from "@mantine/core";
+import SelectPreset from "../components/settings/SelectPreset";
+import SelectHelpLines from "../components/settings/SelectHelpLines";
+import SelectHighlightedTones from "../components/settings/SelectHighlightedTones";
+import SelectStartTone from "../components/settings/SelectStartTone";
+import SelectMelodyLength from "../components/settings/SelectMelodyLength";
+import SelectToneCombinations from "../components/settings/SelectToneCombinations";
+import SelectMaxToneDiff from "../components/settings/SelectMaxToneDiff";
+import SaveSettings from "../components/settings/SaveSettings";
+import CreditsFooter from "../components/CreditsFooter";
+import ClearStorageButton from "../components/ClearStorageButton";
+import DownloadDebugButton from "../components/DownloadDebugButton";
+import { TEXT_COLOR } from "../defs/constants";
+import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets } from "../defs/functions";
 import type { Settings } from "../interfaces/Settings.interface";
-import { TONAL_LADDER, LENGTH_LIMITS, TEXT_COLOR, CUSTOM_PRESET_LABEL } from "../defs/constants";
-import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets, storeSettingsPreset, getCombinationLabel } from "../defs/functions";
-import { TONE_COMBINATIONS } from "../defs/toneCombinations";
 import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
+import "../styles/Settings.css";
 
 export default function Settings() {
-  document.title += " - Inställningar";
+  document.title = "Tonplatstrappa - Inställningar";
 
   const [settings, setSettings] = useState<Settings>(getStoredSettings());
   const [settingsPresets, setSettingsPresets] = useState<SettingsPreset[]>(getStoredSettingsPresets());
   const [selectedPreset, setSelectedPreset] = useState<string>(getActivePreset(settingsPresets, settings));
-  const [presetLabelInputValue, setPresetLabelInputValue] = useState<string>("");
-  const [presetLabelInputError, setPresetLabelInputError] = useState<string>("");
-  const [presetLabelInputSuccess, setPresetLabelInputSuccess] = useState<string>("");
 
   useEffect(() => {
     storeSettings(settings);
     setSelectedPreset(getActivePreset(settingsPresets, settings));
-    setPresetLabelInputError("");
-    setPresetLabelInputSuccess("");
   }, [settings]);
 
   /**
@@ -32,317 +36,107 @@ export default function Settings() {
     return JSON.parse(JSON.stringify(settings));
   }
 
-  /**
-   * Stores the current settings and updates the settings presets array (`settingsPreset`)
-   * if a unique label (name) is provided and the settings doesn't already exist as a preset.
-   */
-  function saveSettingsAsPreset(): void {
-
-    // Check that the label input isn't empty
-    if (!presetLabelInputValue) {
-      setPresetLabelInputError("Paketet behöver ett namn");
-    }
-
-    // Check that the label isn't the label for custom settings
-    else if (presetLabelInputValue === CUSTOM_PRESET_LABEL) {
-      setPresetLabelInputError("Välj ett annat namn");
-    }
-
-    // Check that the new label is unique
-    else if (settingsPresets.map((preset) => {
-        return preset.label;
-      }).includes(presetLabelInputValue)) {
-      setPresetLabelInputError("Det finns redan ett paket med det här namnet");
-    }
-
-    // Check that the settings isn't already stored as a preset
-    else if (settingsPresets.map((preset) => {
-        return JSON.stringify(preset.settings);
-      }).includes(JSON.stringify(settings))) {
-      setPresetLabelInputError("De valda inställningarna finns redan sparade som ett paket");
-    }
-
-    // Store the settings as a new preset and update the loaded presets
-    else {
-      storeSettingsPreset({
-        label: presetLabelInputValue,
-        settings: settings
-      });
-      setSettingsPresets(getStoredSettingsPresets());
-      setPresetLabelInputValue("");
-      setPresetLabelInputSuccess(`Inställningarna är sparade som '${presetLabelInputValue}'`);
-    }
-  }
-
   return (
-    <>
-      <Center>
-        <Title
-          m={20}
+    <Flex 
+      direction="column"
+      justify="space-between"
+      h={"100vh"}
+    >
+      <Box>
+        <Center
+          className="header"
         >
-          Inställningar
-        </Title>
-      </Center>
-
-      <Flex
-        m={5}
-        gap="xs"
-        justify="center"
-        wrap="wrap"
-      >
-        <Fieldset
-          w={400}
-          legend="Färdiga inställningar"
-          variant="outline"
-        >
-          <Flex
-            gap={5}
+          <Title
+            m={20}
           >
-            <TextInput 
-              label="Spara nuvarande inställningar som paket"
-              placeholder="Paketnamn"
-              value={presetLabelInputValue}
-              error={presetLabelInputError}
-              success={presetLabelInputSuccess}
-              onChange={(event) => {
-                setPresetLabelInputValue(event.currentTarget.value.trim());
-                setPresetLabelInputError("");
-                setPresetLabelInputSuccess("");
-              }}
-            />
-            <Flex
-              align={"end"}
-            >
-              <Tooltip
-                label="Inställningarna sparas som ett nytt paket med det angivna namnet.
-                       Inställningspaketet sparas endast på den här datorn i den här webbläsaren."
-                multiline
-                w={200}
-              >
-                <Button
-                  size="xs"
-                  color={"gray"}
-                  mb={3}
-                  onClick={() =>
-                    saveSettingsAsPreset()
-                  }
-                >
-                  Spara
-                </Button>
-              </Tooltip>
-            </Flex>
-          </Flex>
-          <Space h={"sm"}/>
-          <NativeSelect
-            label="Välj ett inställningspaket"
-            data={settingsPresets.map((set) => {
-                return {
-                  label: set.label,
-                  value: set.label,
-                  disabled: false
-                };
-              }).concat([{
-                label: CUSTOM_PRESET_LABEL,
-                value: CUSTOM_PRESET_LABEL,
-                disabled: true
-              }])
-            }
-            value={selectedPreset}
-            onChange={(event) => {
-              const value = event.currentTarget.value;
-              if (selectedPreset !== value) {
-                setSelectedPreset(value);
-                for (const set of settingsPresets) {
-                  if (set.label === value) {
-                    setSettings(set.settings);
-                  }
-                }
-              }
-            }}
-          />
-        </Fieldset>
+            Inställningar
+          </Title>
+        </Center>
 
-        <Fieldset
-          w={300}
-          legend="Första ton"
-          variant="outline"
+        <Flex
+          m={5}
+          gap="xs"
+          justify="center"
+          align="flex-start"
+          wrap="wrap"
         >
-          <Switch
-            label="Slumpmässig första tonkombination"
-            checked={settings.startTone.random}
-            onChange={(event) => {
-              let _tempSettings = getSettingsClone();
-              _tempSettings.startTone.random = event.currentTarget.checked;
-              setSettings(_tempSettings);
-            }}
+          <SelectPreset
+            settingsPresets={settingsPresets}
+            selectedPreset={selectedPreset}
+            setSelectedPreset={setSelectedPreset}
+            setSettings={setSettings}
           />
-          <Space h="lg" />
-          <Slider 
-            disabled={settings.startTone.random}
-            thumbSize={20}
-            mb={10}
-            min={0}
-            max={TONAL_LADDER.length - 1}
-            step={1}
-            label={(value) => TONAL_LADDER[value]}
-            marks={TONAL_LADDER.map((tone, i) => {
-              return {value: i, label: tone};
-            })}
-            value={settings.startTone.index}
-            onChange={(value) => {
-              let _tempSettings = getSettingsClone();
-              _tempSettings.startTone.index = value;
-              setSettings(_tempSettings);
-            }}
-          />
-        </Fieldset>
 
-        <Fieldset
-          w={300}
-          legend="Antal toner"
-          variant="outline"
-        >
-          <Switch
-            label="Slumpmässigt"
-            checked={settings.melodyLength.random}
-            onChange={(event) => {
-              let _tempSettings = getSettingsClone();
-              _tempSettings.melodyLength.random = event.currentTarget.checked;
-              setSettings(_tempSettings);
-            }}
+          <SelectHelpLines
+            settings={settings}
+            setSettings={setSettings}
+            getSettingsClone={getSettingsClone}
           />
-          <Space h="lg" />
-          <Slider 
-            disabled={settings.melodyLength.random}
-            thumbSize={20}
-            mb={10}
-            min={LENGTH_LIMITS.min}
-            max={LENGTH_LIMITS.max}
-            step={1}
-            marks={Array.from({ length: LENGTH_LIMITS.max - LENGTH_LIMITS.min + 1 }, (_, i) => {
-              const value = i + LENGTH_LIMITS.min;
-              return { value, label: value };
-            })}
-            value={settings.melodyLength.length}
-            onChange={(value) => {
-              let _tempSettings = getSettingsClone();
-              _tempSettings.melodyLength.length = value;
-              setSettings(_tempSettings);
-            }}
-          />
-        </Fieldset>
 
-        <Fieldset
-          w={500}
-          legend="Tonkombinationer"
-          variant="outline"
-        >
+          <SelectHighlightedTones
+            settings={settings}
+            setSettings={setSettings}
+            getSettingsClone={getSettingsClone}
+          />
+
+          <SelectStartTone
+            settings={settings}
+            setSettings={setSettings}
+            getSettingsClone={getSettingsClone}
+          />
+
+          <SelectMelodyLength
+            settings={settings}
+            setSettings={setSettings}
+            getSettingsClone={getSettingsClone}
+          />
+
+          <SelectToneCombinations
+            settings={settings}
+            setSettings={setSettings}
+            getSettingsClone={getSettingsClone}
+          />
+
+          <SelectMaxToneDiff
+            settings={settings}
+            setSettings={setSettings}
+            getSettingsClone={getSettingsClone}
+          />
+
+          <SaveSettings
+            settings={settings}
+            settingsPresets={settingsPresets}
+            setSettingsPresets={setSettingsPresets}
+          />
+        </Flex>
+
+        <Center>
+          {/* Home page button */}
           <Button
-            size="sm"
-            color="gray"
-            mb={10}
-            onClick={() => {
-              let _tempSettings = getSettingsClone();
-              _tempSettings.toneCombinationsPool = TONE_COMBINATIONS;
-              setSettings(_tempSettings);
-            }}
-          >
-            Markera alla
-          </Button>
-          <MultiSelect 
-            label="Valda kombinationer kommer att användas för att skapa melodier."
-            chevronColor="var(--mantine-color-dark-0)"
-            floatingHeight="viewport"
-            clearable
-            withAlignedLabels
-            data={TONE_COMBINATIONS.map((combination) => {
-                return {
-                  value: combination.join(","),
-                  label: getCombinationLabel(combination)
-                };
-              }).sort((a, b) => a.label.localeCompare(b.label))
-            }
-            value={settings.toneCombinationsPool.map((combination) => {
-              return combination.join(",");
-            })}
-            onChange={(value) => {
-              let _tempSettings = getSettingsClone();
-              _tempSettings.toneCombinationsPool = value.map((v) => {
-                return v.split(",").map(Number);
-              });
-              setSettings(_tempSettings);
-            }}
-          />
-        </Fieldset>
-
-        <Fieldset
-          w={300}
-          legend="Maximalt intervallsprång"
-          variant="outline"
-        >
-          <Slider
-            thumbSize={20}
-            mb={10}
-            min={1}
-            max={TONAL_LADDER.length - 1}
-            step={1}
-            marks={Array.from({ length: TONAL_LADDER.length - 1 }, (_, i) => {
-              const value = i + 1;
-              return { value, label: value };
-            })}
-            value={settings.maxToneDiff}
-            onChange={(value) => {
-              let _tempSettings = getSettingsClone();
-              _tempSettings.maxToneDiff = value;
-              setSettings(_tempSettings);
-            }}
-          />
-        </Fieldset>
-      </Flex>
-
-      <Center>
-        {/* Home page button */}
-        <Button
-          className="settings-back-button"
-          m={20}
-          size="lg"
-          variant="outline"
-          color={TEXT_COLOR}
-          onClick={() => 
-            window.location.href = "/tone-ladder"
-          }
-        >
-          Tillbaka
-        </Button>
-
-        {/* Clear storage button */}
-        <Tooltip
-          withArrow
-          label={"Radera lokalt sparad data"}
-        >
-          <ActionIcon
-            size={"xl"}
-            radius={"xl"}
+            className="settings-back-button"
+            m={20}
+            size="lg"
             variant="outline"
-            color="red"
-            style={{
-              position: "fixed",
-              bottom: 20,
-              right: 20
-            }}
-            onClick={() => {
-              // Confirm and clear local storage
-              if (confirm("Är du säker på att du vill radera all sparad information?\nDetta inkluderar dina lokalt sparade inställningspaket.")) {
-                localStorage.clear();
-                location.reload();
-                alert("Din lokala data har raderats.");
-              }
-            }}
+            color={TEXT_COLOR}
+            onClick={() => 
+              window.location.href = "/tone-ladder"
+            }
           >
-            <MdOutlineDeleteForever size={"30"}/>
-          </ActionIcon>
-        </Tooltip>
-      </Center>
-    </>
+            Tillbaka
+          </Button>
+          
+          <Flex
+            gap={10}
+            pos={"fixed"}
+            bottom={20}
+            right={20}
+          >
+            <DownloadDebugButton />
+            <ClearStorageButton />
+          </Flex>
+        </Center>
+      </Box>
+      <CreditsFooter />
+    </Flex>
   );
 }

@@ -1,9 +1,13 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import "@mantine/core/styles.css";
-import { MantineProvider } from "@mantine/core";
+import { createTheme, MantineProvider } from "@mantine/core";
 import "./styles/index.css";
 import App from './App.tsx';
+
+const theme = createTheme({
+  cursorType: 'pointer',
+});
 
 const redirect = sessionStorage.redirect;
 
@@ -14,7 +18,7 @@ if (redirect) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MantineProvider forceColorScheme="dark">
+    <MantineProvider theme={theme} forceColorScheme="dark">
       <App />
     </MantineProvider>
   </StrictMode>
