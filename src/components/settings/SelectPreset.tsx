@@ -18,11 +18,11 @@ export default function SelectPreset({
 }: SelectPresetProps) {
   return (
     <Fieldset
-      w={300}
       legend="Färdiga inställningar"
     >
       <NativeSelect
         label="Välj ett inställningspaket"
+        w={330}
         data={settingsPresets.map((set) => {
             return {
               label: set.label,
