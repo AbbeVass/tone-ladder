@@ -6,7 +6,7 @@ Copyright (C) 2026 Abbe Andersson Vass
 
 ## Support tone-ladder
 
-[<img src="./public/bmc-button.png" width="200">](https://www.buymeacoffee.com/abbevass)
+[<img src="./src/assets/bmc-button.png" width="200">](https://www.buymeacoffee.com/abbevass)
 
 ## Description
 
