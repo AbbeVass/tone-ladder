@@ -28,7 +28,7 @@ export default function Home() {
             highlightedTones={SETTINGS.highlightedTones}
           />
         </Box>
-        <Box className="tone-ladder-container">
+        <Box className="tonal-ladder-container">
           <TonalLadderSvg
             displayLadder={melody}
             stepWidth={TONE_LADDER_STEP_WIDTH}

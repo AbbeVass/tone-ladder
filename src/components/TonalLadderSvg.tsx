@@ -24,17 +24,17 @@ export default function TonalLadderSvg({
   helpLines = []
 }: TonalLadderSvgProps) {
   
-  const TONE_LADDER_SVG_WIDTH = displayLadder.length * stepWidth + THICKNESS;
+  const TONAL_LADDER_SVG_WIDTH = displayLadder.length * stepWidth + THICKNESS;
   
   return (
     <svg
-      className="tone-ladder-svg"
-      viewBox={`0 0 ${TONE_LADDER_SVG_WIDTH} ${SVG_HEIGHT}`}
+      className="tonal-ladder-svg"
+      viewBox={`0 0 ${TONAL_LADDER_SVG_WIDTH} ${SVG_HEIGHT}`}
       preserveAspectRatio="xMinYMid meet"
     >
       {Array.from(displayLadder, (tone_index, i) => {
 
-        const x = stepWidth * i + (TONE_LADDER_SVG_WIDTH - stepWidth * displayLadder.length) / 2;
+        const x = stepWidth * i + (TONAL_LADDER_SVG_WIDTH - stepWidth * displayLadder.length) / 2;
         const y = STEP_HEIGHT * TONAL_LADDER.length - tone_index * STEP_HEIGHT;
 
         return (
@@ -63,7 +63,7 @@ export default function TonalLadderSvg({
             key={i}
             x={x}
             y={y}
-            width={TONE_LADDER_SVG_WIDTH}
+            width={TONAL_LADDER_SVG_WIDTH}
             height={THICKNESS}
             fill={STAIRCASE_COLOR}
           />
