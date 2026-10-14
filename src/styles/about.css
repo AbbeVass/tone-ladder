@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wdth,wght@0,75..125,200..900;1,75..125,200..900&display=swap');
+
+@media (min-width: 1100px) {
+  .about-back-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 110;
+  }
+}
+
+.bmc-button {
+  height: 96px;
+}
+.github-button {
+  height: 100px;
+  border-radius: 18px;
+  padding: 20px;
+}
+.github-icon {
+  width: 75px;
+}
+.github-text {
+  font-family: 'Mona Sans', sans-serif;
+  font-weight: 700;
+}
+
+@media (max-width: 820px) {
+  .buttons-container {
+    flex-direction: column;
+  }
+  .bmc-button {
+    height: 63px;
+  }
+  .github-button {
+    width: 226px;
+    height: 65px;
+    border-radius: 12px;
+  }
+  .github-icon {
+    width: 45px;
+  }
+  .github-text {
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
