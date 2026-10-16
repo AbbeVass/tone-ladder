@@ -3,6 +3,8 @@ import CreditsFooter from "../components/CreditsFooter";
 import { TEXT_COLOR } from "../defs/constants";
 
 export default function AboutScales() {
+  document.title = "Tonplatstrappan - Skalor";
+
   return (
     <Flex 
       direction="column"

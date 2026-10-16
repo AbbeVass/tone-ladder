@@ -18,7 +18,7 @@ import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
 import "../styles/Settings.css";
 
 export default function Settings() {
-  document.title = "Tonplatstrappa - Inställningar";
+  document.title = "Tonplatstrappan - Inställningar";
 
   const [settings, setSettings] = useState<Settings>(getStoredSettings());
   const [settingsPresets, setSettingsPresets] = useState<SettingsPreset[]>(getStoredSettingsPresets());

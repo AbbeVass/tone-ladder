@@ -3,6 +3,8 @@ import { Flex, Title, Text } from "@mantine/core";
 import { TEXT_COLOR } from "../defs/constants";
 
 export default function NotFound() {
+  document.title = "Tonplatstrappan - 404";
+
   return (
     <Flex
       direction="column"

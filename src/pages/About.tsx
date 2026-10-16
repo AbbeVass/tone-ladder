@@ -6,6 +6,8 @@ import bmc_button from "../assets/bmc-button.png";
 import "../styles/about.css";
 
 export default function About() {
+  document.title = "Tonplatstrappan - Om";
+
   return (
     <Flex 
       direction="column"
