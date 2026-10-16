@@ -27,7 +27,7 @@ export default function SelectHelpLines({
             color={STAIRCASE_COLOR}
             mt={5}
             label={TONAL_LADDER[tone_index]}
-            checked={settings.helpLines?.includes(tone_index)}
+            checked={settings.helpLines?.includes(tone_index) || false}
             onChange={(event) => {
               let _tempSettings = getSettingsClone();
               if (event.currentTarget.checked) {

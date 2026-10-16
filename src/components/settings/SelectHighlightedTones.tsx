@@ -53,7 +53,7 @@ export default function SelectHighlightedTones({
               size="md"
               color={HIGHLIGHT_COLOR}
               label={tone}
-              checked={settings.highlightedTones?.includes(tone_index)}
+              checked={settings.highlightedTones?.includes(tone_index) || false}
               onChange={(event) => {
                 let _tempSettings = getSettingsClone();
                 if (event.currentTarget.checked) {
