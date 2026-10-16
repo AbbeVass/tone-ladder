@@ -63,7 +63,7 @@ export default function StaircaseSvg({
               {tone}
             </text>
 
-            {helpLines.includes(i) && (
+            {helpLines.includes(i) && i < TONAL_LADDER.length - 1 && (
               <rect
                 x={x + HELP_LINE_GAP}
                 y={y}
