@@ -1,4 +1,4 @@
-import { Flex, Text } from "@mantine/core";
+import { Divider, Flex, Group, Space, Text } from "@mantine/core";
 import { TEXT_COLOR } from "../defs/constants";
 
 export default function CreditsFooter() {
@@ -45,6 +45,44 @@ export default function CreditsFooter() {
           Stötta utvecklingen av Tone Ladder 🔗
         </a>
       </Text>
+      <Space h={5} />
+      <Group gap={7}>
+        <a
+          style={{
+            fontSize: "12px",
+            color: TEXT_COLOR
+          }}
+          href="/tone-ladder"
+        >
+          Hem
+        </a>
+        <Divider
+          orientation="vertical"
+          color={TEXT_COLOR}
+        />
+        <a
+          style={{
+            fontSize: "12px",
+            color: TEXT_COLOR
+          }}
+          href="/tone-ladder/about"
+        >
+          Om
+        </a>
+        <Divider
+          orientation="vertical"
+          color={TEXT_COLOR}
+        />
+        <a
+          style={{
+            fontSize: "12px",
+            color: TEXT_COLOR
+          }}
+          href="/tone-ladder/settings"
+        >
+          Inställningar
+        </a>
+      </Group>
     </Flex>
   );
 }

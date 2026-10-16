@@ -18,7 +18,7 @@
   align-items: stretch;
 }
 
-.tone-ladder-container {
+.tonal-ladder-container {
   width: auto;
   flex: 1 1 auto;
   min-width: 0;
@@ -30,7 +30,7 @@
 }
 
 .staircase-svg,
-.tone-ladder-svg {
+.tonal-ladder-svg {
   width: auto;
   height: 100%;
   display: block;

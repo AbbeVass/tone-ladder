@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Center, Box, Flex, Text, Space } from "@mantine/core";
+import AboutPageButtion from "../components/AboutPageButton";
 import StaircaseSvg from "../components/StaircaseSvg";
 import TonalLadderSvg from "../components/TonalLadderSvg";
 import CreditsFooter from "../components/CreditsFooter";
@@ -19,6 +20,7 @@ export default function Home() {
       direction="column"
       h={"100vh"}
     >
+      <AboutPageButtion />
       <Box className="svg-container">
         <Box className="staircase-container">
           <StaircaseSvg 
@@ -26,7 +28,7 @@ export default function Home() {
             highlightedTones={SETTINGS.highlightedTones}
           />
         </Box>
-        <Box className="tone-ladder-container">
+        <Box className="tonal-ladder-container">
           <TonalLadderSvg
             displayLadder={melody}
             stepWidth={TONE_LADDER_STEP_WIDTH}
