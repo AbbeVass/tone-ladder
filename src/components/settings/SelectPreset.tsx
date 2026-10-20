@@ -1,4 +1,4 @@
-import { Fieldset, NativeSelect } from "@mantine/core";
+import { Fieldset, Select } from "@mantine/core";
 import { CUSTOM_PRESET_LABEL } from "../../defs/constants";
 import type { SettingsPreset } from "../../interfaces/SettingsPreset.interface";
 import type { Settings } from "../../interfaces/Settings.interface";
@@ -20,9 +20,10 @@ export default function SelectPreset({
     <Fieldset
       legend="Färdiga inställningar"
     >
-      <NativeSelect
+      <Select
         label="Välj ett inställningspaket"
         w={330}
+        allowDeselect={false}
         data={settingsPresets.map((set) => {
             return {
               label: set.label,
@@ -36,9 +37,8 @@ export default function SelectPreset({
           }])
         }
         value={selectedPreset}
-        onChange={(event) => {
-          const value = event.currentTarget.value;
-          if (selectedPreset !== value) {
+        onChange={(value) => {
+          if (value && selectedPreset !== value) {
             setSelectedPreset(value);
             for (const set of settingsPresets) {
               if (set.label === value) {
