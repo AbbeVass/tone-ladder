@@ -58,9 +58,7 @@ export default function StaircaseSvg({
               textAnchor="middle"
               dominantBaseline="middle"
               fill={highlightedTones.includes(i) ? HIGHLIGHT_COLOR : TEXT_COLOR}
-              fontSize={tonalLadder.some((tone) => {
-                String(tone).length > 1
-              }) ? "16px" : "20px"}
+              fontSize={tonalLadder.some(tone => String(tone).length > 1) ? "16px" : "20px"}
               fontWeight="bold"
             >
               {tone}
