@@ -1,17 +1,19 @@
 import { Fieldset, Slider, Space, Switch } from "@mantine/core";
-import { STAIRCASE_COLOR, TONAL_LADDER } from "../../defs/constants";
+import { STAIRCASE_COLOR } from "../../defs/constants";
 import type { Settings } from "../../interfaces/Settings.interface";
 
 export interface SelectStartToneProps {
   settings: Settings;
   setSettings: (settings: Settings) => void;
   getSettingsClone: () => Settings;
+  tonalLadder: (number | string)[];
 }
 
 export default function SelectStartTone({
   settings,
   setSettings,
-  getSettingsClone
+  getSettingsClone,
+  tonalLadder
 }: SelectStartToneProps) {
   return (
     <Fieldset
@@ -34,10 +36,10 @@ export default function SelectStartTone({
         thumbSize={20}
         mb={10}
         min={0}
-        max={TONAL_LADDER.length - 1}
+        max={tonalLadder.length - 1}
         step={1}
-        label={(value) => TONAL_LADDER[value]}
-        marks={TONAL_LADDER.map((tone, i) => {
+        label={(value) => tonalLadder[value]}
+        marks={tonalLadder.map((tone, i) => {
           return {value: i, label: tone};
         })}
         value={settings.startTone.index}

@@ -1,16 +1,15 @@
 import {
-  TONAL_LADDER,
   TEXT_COLOR,
   STAIRCASE_COLOR,
   HIGHLIGHT_COLOR,
   STAIRCASE_STEP_WIDTH,
   STEP_HEIGHT,
   THICKNESS,
-  GAP,
-  SVG_HEIGHT
+  GAP
 } from "../defs/constants";
 
 export interface TonalLadderSvgProps {
+  tonalLadder: (number | string)[];
   displayLadder: number[];
   stepWidth?: number;
   highlightedTones?: number[];
@@ -18,6 +17,7 @@ export interface TonalLadderSvgProps {
 }
 
 export default function TonalLadderSvg({
+  tonalLadder,
   displayLadder,
   stepWidth = 50,
   highlightedTones = [],
@@ -25,6 +25,7 @@ export default function TonalLadderSvg({
 }: TonalLadderSvgProps) {
   
   const TONAL_LADDER_SVG_WIDTH = displayLadder.length * stepWidth + THICKNESS;
+  const SVG_HEIGHT = tonalLadder.length * STEP_HEIGHT + THICKNESS;
   
   return (
     <svg
@@ -35,7 +36,7 @@ export default function TonalLadderSvg({
       {Array.from(displayLadder, (tone_index, i) => {
 
         const x = stepWidth * i + (TONAL_LADDER_SVG_WIDTH - stepWidth * displayLadder.length) / 2;
-        const y = STEP_HEIGHT * TONAL_LADDER.length - tone_index * STEP_HEIGHT;
+        const y = STEP_HEIGHT * tonalLadder.length - tone_index * STEP_HEIGHT;
 
         return (
           <g key={i}>
@@ -48,15 +49,15 @@ export default function TonalLadderSvg({
               fontSize="20px"
               fontWeight="bold"
             >
-              {TONAL_LADDER[tone_index]}
+              {tonalLadder[tone_index]}
             </text>
           </g>
         );
       })}
       
       {helpLines.map((tone_index, i) => {
-        const x = tone_index === TONAL_LADDER.length - 1 ? STAIRCASE_STEP_WIDTH : 0;
-        const y = STEP_HEIGHT * TONAL_LADDER.length - tone_index * STEP_HEIGHT;
+        const x = tone_index === tonalLadder.length - 1 ? STAIRCASE_STEP_WIDTH : 0;
+        const y = STEP_HEIGHT * tonalLadder.length - tone_index * STEP_HEIGHT;
         
         return (
           <rect

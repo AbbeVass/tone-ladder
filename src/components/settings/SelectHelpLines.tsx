@@ -1,17 +1,19 @@
 import { Fieldset, Checkbox } from "@mantine/core";
-import { TONAL_LADDER, STAIRCASE_COLOR, HELP_LINES } from "../../defs/constants";
+import { STAIRCASE_COLOR, HELP_LINES } from "../../defs/constants";
 import type { Settings } from "../../interfaces/Settings.interface";
 
 export interface SelectHelpLinesProps {
   settings: Settings;
   setSettings: (settings: Settings) => void;
   getSettingsClone: () => Settings;
+  tonalLadder: (number | string)[];
 }
 
 export default function SelectHelpLines({
   settings,
   setSettings,
-  getSettingsClone
+  getSettingsClone,
+  tonalLadder
 }: SelectHelpLinesProps) {
   return (
     <Fieldset
@@ -26,7 +28,7 @@ export default function SelectHelpLines({
             size="md"
             color={STAIRCASE_COLOR}
             mt={5}
-            label={TONAL_LADDER[tone_index]}
+            label={tonalLadder[tone_index]}
             checked={settings.helpLines?.includes(tone_index) || false}
             onChange={(event) => {
               let _tempSettings = getSettingsClone();

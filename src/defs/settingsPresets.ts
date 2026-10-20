@@ -4,6 +4,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Melodi stegvis rörelse",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": false,
         "index": 3
@@ -104,6 +117,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Melodi terssprång",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": false,
         "index": 3
@@ -200,6 +226,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Melodi kvartssprång",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": false,
         "index": 3
@@ -333,6 +372,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Melodi slumpad startton",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": true,
         "index": 3
@@ -471,6 +523,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Inspirerad av J.Jersild",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": false,
         "index": 3
@@ -523,6 +588,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Intervall från grundton",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": true,
         "index": 7
@@ -569,6 +647,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Treklanger 1 - tonika",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": true,
         "index": 7
@@ -638,6 +729,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Treklanger grundläge (utom 7:e steget)",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": true,
         "index": 7
@@ -694,6 +798,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Treklanger grundläge (med 7:e steget)",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": true,
         "index": 7
@@ -755,6 +872,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Treklanger närmsta vägen (utom 7:e steget)",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": true,
         "index": 7
@@ -806,6 +936,19 @@ export const SETTINGS_PRESETS: SettingsPreset[] = [
   {
     "label": "Treklanger närmsta vägen (med 7:e steget)",
     "settings": {
+      "tonalLadder": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        1
+      ],
       "startTone": {
         "random": true,
         "index": 7

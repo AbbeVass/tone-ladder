@@ -1,5 +1,6 @@
 import type { Settings } from "../interfaces/Settings.interface";
-import { LENGTH_LIMITS, TONAL_LADDER } from "./constants";
+import { LENGTH_LIMITS } from "./constants";
+import { getTonalLadder } from "./functions";
 
 /**
  * Generate a new melody from the rules set by `settings`.
@@ -11,6 +12,7 @@ import { LENGTH_LIMITS, TONAL_LADDER } from "./constants";
  * @returns an array of indices on the tonal ladder
  */
 export function generateMelody(settings: Settings): number[] {
+  const TONAL_LADDER = getTonalLadder();
   let melody: number[] = [];
   let lastUsedCombination: number[] = [];
 

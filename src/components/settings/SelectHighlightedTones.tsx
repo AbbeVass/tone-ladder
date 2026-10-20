@@ -1,17 +1,19 @@
 import { Button, Checkbox, Fieldset, Flex } from "@mantine/core";
-import { HIGHLIGHT_COLOR, TONAL_LADDER } from "../../defs/constants";
+import { HIGHLIGHT_COLOR } from "../../defs/constants";
 import type { Settings } from "../../interfaces/Settings.interface";
 
 export interface SelectHighlightedTonesProps {
   settings: Settings;
   setSettings: (settings: Settings) => void;
   getSettingsClone: () => Settings;
+  tonalLadder: (number | string)[];
 }
 
 export default function SelectHighlightedTones({
   settings,
   setSettings,
-  getSettingsClone
+  getSettingsClone,
+  tonalLadder
 }: SelectHighlightedTonesProps) {
   return (
     <Fieldset
@@ -24,7 +26,7 @@ export default function SelectHighlightedTones({
         mb={10}
         onClick={() => {
           let _tempSettings = getSettingsClone();
-          _tempSettings.highlightedTones = [...Array(TONAL_LADDER.length).keys()];
+          _tempSettings.highlightedTones = [...Array(tonalLadder.length).keys()];
           setSettings(_tempSettings);
         }}
       >
@@ -45,7 +47,7 @@ export default function SelectHighlightedTones({
       <Flex
         gap={5}
       >
-        {TONAL_LADDER.map((tone, tone_index) => {
+        {tonalLadder.map((tone, tone_index) => {
           return (
             <Checkbox
               key={tone_index}

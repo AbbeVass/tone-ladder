@@ -5,12 +5,13 @@ import StaircaseSvg from "../components/StaircaseSvg";
 import TonalLadderSvg from "../components/TonalLadderSvg";
 import CreditsFooter from "../components/CreditsFooter";
 import { STAIRCASE_COLOR, TEXT_COLOR } from "../defs/constants";
-import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets } from "../defs/functions";
+import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets, getTonalLadder } from "../defs/functions";
 import { generateMelody } from "../defs/generateMelody";
 import "../styles/svg.css";
 
 export default function Home() {
-  const TONE_LADDER_STEP_WIDTH = 50;
+  const TONAL_LADDER = getTonalLadder();
+  const TONAL_LADDER_STEP_WIDTH = 50;
 
   const SETTINGS = getStoredSettings();
   const [melody, setMelody] = useState<number[]>(getStoredMelody());
@@ -23,15 +24,17 @@ export default function Home() {
       <AboutPageButtion />
       <Box className="svg-container">
         <Box className="staircase-container">
-          <StaircaseSvg 
+          <StaircaseSvg
+            tonalLadder={TONAL_LADDER}
             helpLines={SETTINGS.helpLines}
             highlightedTones={SETTINGS.highlightedTones}
           />
         </Box>
         <Box className="tonal-ladder-container">
           <TonalLadderSvg
+            tonalLadder={TONAL_LADDER}
             displayLadder={melody}
-            stepWidth={TONE_LADDER_STEP_WIDTH}
+            stepWidth={TONAL_LADDER_STEP_WIDTH}
             helpLines={SETTINGS.helpLines}
             highlightedTones={SETTINGS.highlightedTones}
           />

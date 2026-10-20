@@ -1,17 +1,18 @@
 import { Fieldset, Slider } from "@mantine/core";
-import { TONAL_LADDER } from "../../defs/constants";
 import type { Settings } from "../../interfaces/Settings.interface";
 
 export interface SelectMaxToneDiffProps {
   settings: Settings;
   setSettings: (settings: Settings) => void;
   getSettingsClone: () => Settings;
+  tonalLadder: (number | string)[];
 }
 
 export default function SelectMaxToneDiff({
   settings,
   setSettings,
-  getSettingsClone
+  getSettingsClone,
+  tonalLadder
 }: SelectMaxToneDiffProps) {
   return (
     <Fieldset
@@ -22,9 +23,9 @@ export default function SelectMaxToneDiff({
         thumbSize={20}
         mb={10}
         min={1}
-        max={TONAL_LADDER.length - 1}
+        max={tonalLadder.length - 1}
         step={1}
-        marks={Array.from({ length: TONAL_LADDER.length - 1 }, (_, i) => {
+        marks={Array.from({ length: tonalLadder.length - 1 }, (_, i) => {
           const value = i + 1;
           return { value, label: value };
         })}

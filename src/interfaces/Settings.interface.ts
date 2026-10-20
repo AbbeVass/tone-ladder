@@ -1,4 +1,5 @@
 export interface Settings {
+  tonalLadder?: (number | string)[];
   startTone: {
     random: boolean;
     index: number;

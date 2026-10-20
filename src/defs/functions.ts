@@ -1,7 +1,8 @@
 import type { Settings } from "../interfaces/Settings.interface";
 import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
-import { CUSTOM_PRESET_LABEL, MELODY_STORAGE_KEY, SETTINGS_PRESETS_STORAGE_KEY, SETTINGS_STORAGE_KEY, TONAL_LADDER } from "./constants";
+import { CUSTOM_PRESET_LABEL, MELODY_STORAGE_KEY, SETTINGS_PRESETS_STORAGE_KEY, SETTINGS_STORAGE_KEY } from "./constants";
 import { SETTINGS_PRESETS } from "./settingsPresets";
+import { TONAL_LADDERS } from "./tonal_ladders";
 
 /**
  * Checks whether an object is a Settings object
@@ -66,6 +67,14 @@ export function getStoredSettings(): Settings {
     }
   }
   return SETTINGS_PRESETS[0].settings;
+}
+
+/**
+ * @returns the tonal ladder that is stored in settings or the tonal ladder with numbers as default
+ */
+export function getTonalLadder(): (number | string)[] {
+  const settings = getStoredSettings();
+  return settings.tonalLadder ?? [...TONAL_LADDERS[0].value];
 }
 
 /**
@@ -157,6 +166,7 @@ export function getActivePreset(presets: SettingsPreset[], settings: Settings): 
  * @returns the label as a string
  */
 export function getCombinationLabel(comb: number[]): string {
+  const TONAL_LADDER = getTonalLadder();
   let label = TONAL_LADDER[comb[0]] as string;
 
   for (let i = 1; i < comb.length; i++) {

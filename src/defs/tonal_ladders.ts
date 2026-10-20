@@ -1,0 +1,35 @@
+export interface TonalLadder {
+  label: string;
+  value: (string | number)[];
+}[]
+
+export const TONAL_LADDERS: TonalLadder[] = [
+  //{ label: "Ton-index", value: ["5-0", "6-1", "7-2", "1-3", "2-4", "3-5", "4-6", "5-7", "6-8", "7-9", "1-0"] },
+  { label: "Siffror", value: [5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1] },
+  { label: "C-dur", value: ["G", "A", "B", "C", "D", "E", "F", "G", "A", "B", "C"] },
+  { label: "A-moll", value: ["E", "F", "G", "A", "B", "C", "D", "E", "F", "G", "A"] },
+  { label: "G-dur", value: ["D", "E", "F♯", "G", "A", "B", "C", "D", "E", "F♯", "G"] },
+  { label: "E-moll", value: ["B", "C", "D", "E", "F♯", "G", "A", "B", "C", "D", "E"] },
+  { label: "D-dur", value: ["A", "B", "C♯", "D", "E", "F♯", "G", "A", "B", "C♯", "D"] },
+  { label: "B-moll", value: ["F♯", "G", "A", "B", "C♯", "D", "E", "F♯", "G", "A", "B"] },
+  { label: "A-dur", value: ["E", "F♯", "G♯", "A", "B", "C♯", "D", "E", "F♯", "G♯", "A"] },
+  { label: "F♯-moll", value: ["C♯", "D", "E", "F♯", "G♯", "A", "B", "C♯", "D", "E", "F♯"] },
+  { label: "E-dur", value: ["B", "C♯", "D♯", "E", "F♯", "G♯", "A", "B", "C♯", "D♯", "E"] },
+  { label: "C♯-moll", value: ["G♯", "A", "B", "C♯", "D♯", "E", "F♯", "G♯", "A", "B", "C♯"] },
+  { label: "B-dur", value: ["F♯", "G♯", "A♯", "B", "C♯", "D♯", "E", "F♯", "G♯", "A♯", "B"] },
+  { label: "G♯-moll", value: ["D♯", "E", "F♯", "G♯", "A♯", "B", "C♯", "D♯", "E", "F♯", "G♯"] },
+  { label: "F♯-dur", value: ["C♯", "D♯", "E♯", "F♯", "G♯", "A♯", "B", "C♯", "D♯", "E♯", "F♯"] },
+  { label: "D♯-moll", value: ["A♯", "B", "C♯", "D♯", "E♯", "F♯", "G♯", "A♯", "B", "C♯", "D♯"] },
+  { label: "F-dur", value: ["C", "D", "E", "F", "G", "A", "B♭", "C", "D", "E", "F"] },
+  { label: "D-moll", value: ["A", "B♭", "C", "D", "E", "F", "G", "A", "B♭", "C", "D"] },
+  { label: "B♭-dur", value: ["F", "G", "A", "B♭", "C", "D", "E♭", "F", "G", "A", "B♭"] },
+  { label: "G-moll", value: ["D", "E♭", "F", "G", "A", "B♭", "C", "D", "E♭", "F", "G"] },
+  { label: "E♭-dur", value: ["B♭", "C", "D", "E♭", "F", "G", "A♭", "B♭", "C", "D", "E♭"] },
+  { label: "C-moll", value: ["G", "A♭", "B♭", "C", "D", "E♭", "F", "G", "A♭", "B♭", "C"] },
+  { label: "A♭-dur", value: ["E♭", "F", "G", "A♭", "B♭", "C", "D♭", "E♭", "F", "G", "A♭"] },
+  { label: "F-moll", value: ["C", "D♭", "E♭", "F", "G", "A♭", "B♭", "C", "D♭", "E♭", "F"] },
+  { label: "D♭-dur", value: ["A♭", "B♭", "C", "D♭", "E♭", "F", "G♭", "A♭", "B♭", "C", "D♭"] },
+  { label: "B♭-moll", value: ["F", "G♭", "A♭", "B♭", "C", "D♭", "E♭", "F", "G♭", "A♭", "B♭"] },
+  { label: "G♭-dur", value: ["D♭", "E♭", "F", "G♭", "A♭", "B♭", "C♭", "D♭", "E♭", "F", "G♭"] },
+  { label: "E♭-moll", value: ["B♭", "C♭", "D♭", "E♭", "F", "G♭", "A♭", "B♭", "C♭", "D♭", "E♭"] }
+];

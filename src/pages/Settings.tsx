@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Center, Flex, Title, Button, Box } from "@mantine/core";
 import SelectPreset from "../components/settings/SelectPreset";
+import SelectKey from "../components/settings/SelectKey";
 import SelectHelpLines from "../components/settings/SelectHelpLines";
 import SelectHighlightedTones from "../components/settings/SelectHighlightedTones";
 import SelectStartTone from "../components/settings/SelectStartTone";
@@ -12,7 +13,7 @@ import CreditsFooter from "../components/CreditsFooter";
 import ClearStorageButton from "../components/ClearStorageButton";
 import DownloadDebugButton from "../components/DownloadDebugButton";
 import { TEXT_COLOR } from "../defs/constants";
-import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets } from "../defs/functions";
+import { getStoredSettings, getActivePreset, storeSettings, getStoredSettingsPresets, getTonalLadder } from "../defs/functions";
 import type { Settings } from "../interfaces/Settings.interface";
 import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
 import "../styles/Settings.css";
@@ -23,10 +24,14 @@ export default function Settings() {
   const [settings, setSettings] = useState<Settings>(getStoredSettings());
   const [settingsPresets, setSettingsPresets] = useState<SettingsPreset[]>(getStoredSettingsPresets());
   const [selectedPreset, setSelectedPreset] = useState<string>(getActivePreset(settingsPresets, settings));
+  const [tonalLadder, setTonalLadder] = useState<(number | string)[]>(getTonalLadder());
 
   useEffect(() => {
     storeSettings(settings);
     setSelectedPreset(getActivePreset(settingsPresets, settings));
+    if (settings.tonalLadder) {
+      setTonalLadder(settings.tonalLadder);
+    }
   }, [settings]);
 
   /**
@@ -67,22 +72,31 @@ export default function Settings() {
             setSettings={setSettings}
           />
 
+          <SelectKey
+            setSettings={setSettings}
+            getSettingsClone={getSettingsClone}
+            tonalLadder={tonalLadder}
+          />
+
           <SelectHelpLines
             settings={settings}
             setSettings={setSettings}
             getSettingsClone={getSettingsClone}
+            tonalLadder={tonalLadder}
           />
 
           <SelectHighlightedTones
             settings={settings}
             setSettings={setSettings}
             getSettingsClone={getSettingsClone}
+            tonalLadder={tonalLadder}
           />
 
           <SelectStartTone
             settings={settings}
             setSettings={setSettings}
             getSettingsClone={getSettingsClone}
+            tonalLadder={tonalLadder}
           />
 
           <SelectMelodyLength
@@ -101,6 +115,7 @@ export default function Settings() {
             settings={settings}
             setSettings={setSettings}
             getSettingsClone={getSettingsClone}
+            tonalLadder={tonalLadder}
           />
 
           <SaveSettings
