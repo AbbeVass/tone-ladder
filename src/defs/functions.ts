@@ -121,13 +121,15 @@ export function storeSettingsPreset(preset: SettingsPreset): void {
  */
 export function getStoredSettingsPresets(): SettingsPreset[] {
   let validPresets: SettingsPreset[] = [];
+  const presetLabels = new Set(SETTINGS_PRESETS.map((preset) => preset.label));
   const storedPresets = localStorage.getItem(SETTINGS_PRESETS_STORAGE_KEY);
   if (storedPresets) {
     const presetArray = JSON.parse(storedPresets);
     if (Array.isArray(presetArray)) {
       for (const preset of presetArray) {
-        if (validSettingsPresetObject(preset)) {
+        if (validSettingsPresetObject(preset) && !presetLabels.has(preset.label)) {
           validPresets.push(preset);
+          presetLabels.add(preset.label);
         }
       }
 
