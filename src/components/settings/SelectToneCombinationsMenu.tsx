@@ -6,6 +6,7 @@ import type { SelectGroup } from "../../interfaces/SelectGroup.interface";
 export interface SelectToneCombinationsMenuProps extends SelectToneCombinationsFieldProps {
   toneCombinations: number[][];
   combinationLength: number;
+  label: string;
 }
 
 export default function SelectToneCombinationsMenu({
@@ -14,7 +15,8 @@ export default function SelectToneCombinationsMenu({
   getSettingsClone,
   tonalLadder,
   toneCombinations,
-  combinationLength
+  combinationLength,
+  label
 }: SelectToneCombinationsMenuProps) {
 
   function formatSelectData(combinations: number[][]): SelectGroup[] {
@@ -42,7 +44,7 @@ export default function SelectToneCombinationsMenu({
 
   return (
     <MultiSelect 
-      label="Tvåtonskombinationer"
+      label={label}
       chevronColor="#C9C9C9"
       maxDropdownHeight={300}
       clearable

@@ -46,6 +46,7 @@ export default function SelectToneCombinationsField({
         tonalLadder={tonalLadder}
         toneCombinations={TONE_COMBINATIONS}
         combinationLength={2}
+        label="Tvåtonskombinationer"
       />
       <Space h="xs" />
       <SelectToneCombinationsMenu
@@ -55,6 +56,7 @@ export default function SelectToneCombinationsField({
         tonalLadder={tonalLadder}
         toneCombinations={TONE_COMBINATIONS}
         combinationLength={3}
+        label="Tretonskombinationer"
       />
     </Fieldset>
   );
