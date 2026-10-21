@@ -38,7 +38,6 @@ export default function SelectToneCombinationsMenu({
         })
       }
     }
-    console.log(groups);
     return groups;
   }
 
