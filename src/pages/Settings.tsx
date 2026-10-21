@@ -6,7 +6,7 @@ import SelectHelpLines from "../components/settings/SelectHelpLines";
 import SelectHighlightedTones from "../components/settings/SelectHighlightedTones";
 import SelectStartTone from "../components/settings/SelectStartTone";
 import SelectMelodyLength from "../components/settings/SelectMelodyLength";
-import SelectToneCombinations from "../components/settings/SelectToneCombinations";
+import SelectToneCombinationsField from "../components/settings/SelectToneCombinationsField";
 import SelectMaxToneDiff from "../components/settings/SelectMaxToneDiff";
 import SaveSettings from "../components/settings/SaveSettings";
 import CreditsFooter from "../components/CreditsFooter";
@@ -105,10 +105,11 @@ export default function Settings() {
             getSettingsClone={getSettingsClone}
           />
 
-          <SelectToneCombinations
+          <SelectToneCombinationsField
             settings={settings}
             setSettings={setSettings}
             getSettingsClone={getSettingsClone}
+            tonalLadder={tonalLadder}
           />
 
           <SelectMaxToneDiff
