@@ -1,7 +1,7 @@
 import { Tooltip, Code, ActionIcon } from "@mantine/core";
 import { IoCodeDownloadOutline } from "react-icons/io5";
 import { TEXT_COLOR } from "../defs/constants";
-import { downloadStoredObjects } from "../defs/functions";
+import { downloadStoredObjects } from "../defs/functions/downloadStoredObjects";
 
 
 export default function DownloadDebugButton() {

@@ -5,7 +5,9 @@ import StaircaseSvg from "../components/StaircaseSvg";
 import TonalLadderSvg from "../components/TonalLadderSvg";
 import CreditsFooter from "../components/CreditsFooter";
 import { STAIRCASE_COLOR, TEXT_COLOR } from "../defs/constants";
-import { getStoredSettings, storeMelody, getStoredMelody, getActivePreset, getStoredSettingsPresets, getTonalLadder } from "../defs/functions";
+import { getStoredSettings, getTonalLadder } from "../defs/functions/settingsStorage";
+import { getActivePreset, getStoredSettingsPresets } from "../defs/functions/settingsPresetsStorage";
+import { storeMelody, getStoredMelody } from "../defs/functions/melodyStorage";
 import { generateMelody } from "../defs/generateMelody";
 import "../styles/svg.css";
 

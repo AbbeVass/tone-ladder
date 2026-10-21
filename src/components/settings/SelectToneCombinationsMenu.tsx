@@ -1,5 +1,5 @@
 import { MultiSelect } from "@mantine/core";
-import { getCombinationLabel } from "../../defs/functions";
+import { getCombinationLabel } from "../../defs/functions/getCombinationsLabel";
 import type { SelectToneCombinationsFieldProps } from "./SelectToneCombinationsField";
 import type { SelectGroup } from "../../interfaces/SelectGroup.interface";
 

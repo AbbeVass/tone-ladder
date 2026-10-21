@@ -3,7 +3,7 @@ import { Fieldset, Flex, TextInput, Button, Tooltip } from "@mantine/core";
 import { CUSTOM_PRESET_LABEL } from "../../defs/constants";
 import type { SettingsPreset } from "../../interfaces/SettingsPreset.interface";
 import type { Settings } from "../../interfaces/Settings.interface";
-import { getStoredSettingsPresets, storeSettingsPreset } from "../../defs/functions";
+import { getStoredSettingsPresets, storeSettingsPreset } from "../../defs/functions/settingsPresetsStorage";
 
 export interface SaveSettingsProps {
   settings: Settings;

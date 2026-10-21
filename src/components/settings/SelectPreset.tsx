@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Fieldset, Flex, Select } from "@mantine/core";
 import { CUSTOM_PRESET_LABEL } from "../../defs/constants";
-import { deleteSettingsPreset, getStoredSettingsPresets } from "../../defs/functions";
+import { deleteSettingsPreset, getStoredSettingsPresets } from "../../defs/functions/settingsPresetsStorage";
 import type { SettingsPreset } from "../../interfaces/SettingsPreset.interface";
 import type { Settings } from "../../interfaces/Settings.interface";
 
