@@ -20,7 +20,7 @@ The melodies are generated based on a set of rules managed on the settings page 
 - Beginning with the start tone, if it's not random, possible combinations will be randomly picked and added to the melody until it has the decided length.
 - If there's at any point in the generating process not any tone combinations that fit as the next part of the melody, for example if there's no combination that begins with the melody's start tone or if there's only space for a single tone more in the melody, then a single random tone will be added instead that's within the maximum tonal difference.
 
-On the settings page there's also options for adding visually guiding help lines or highlighting/coloring certain tones on the main page.
+On the settings page there's also options for changing the key of the melodies, adding visually guiding help lines or highlighting/coloring certain tones on the main page.
 
 The project has a few prepared settings packages (*presets*). These can be selected on the settings page and will update the current settings. A user can save their own preferred settings as a settings package locally in their browser by writing a name for the package in the last input field on the page and click the adjacent *Save* button.
 
