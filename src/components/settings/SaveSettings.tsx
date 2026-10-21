@@ -9,12 +9,14 @@ export interface SaveSettingsProps {
   settings: Settings;
   settingsPresets: SettingsPreset[];
   setSettingsPresets: (presets: SettingsPreset[]) => void;
+  setSelectedPreset: (preset: string) => void;
 }
 
 export default function SaveSettings({
   settings,
   settingsPresets,
-  setSettingsPresets
+  setSettingsPresets,
+  setSelectedPreset
 }: SaveSettingsProps) {
 
   const [presetLabelInputValue, setPresetLabelInputValue] = useState<string>("");
@@ -63,6 +65,7 @@ export default function SaveSettings({
         settings: settings
       });
       setSettingsPresets(getStoredSettingsPresets());
+      setSelectedPreset(presetLabelInputValue);
       setPresetLabelInputValue("");
       setPresetLabelInputSuccess(`Inställningarna är sparade som '${presetLabelInputValue}'`);
     }

@@ -125,6 +125,7 @@ export default function Settings() {
             settings={settings}
             settingsPresets={settingsPresets}
             setSettingsPresets={setSettingsPresets}
+            setSelectedPreset={setSelectedPreset}
           />
         </Flex>
 
