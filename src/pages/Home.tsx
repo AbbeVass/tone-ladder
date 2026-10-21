@@ -8,7 +8,7 @@ import { STAIRCASE_COLOR, TEXT_COLOR } from "../defs/constants";
 import { getStoredSettings, getTonalLadder } from "../defs/functions/settingsStorage";
 import { getActivePreset, getStoredSettingsPresets } from "../defs/functions/settingsPresetsStorage";
 import { storeMelody, getStoredMelody } from "../defs/functions/melodyStorage";
-import { generateMelody } from "../defs/generateMelody";
+import { generateMelody } from "../defs/functions/generateMelody";
 import "../styles/svg.css";
 
 export default function Home() {

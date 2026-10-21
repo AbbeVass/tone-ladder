@@ -1,6 +1,7 @@
 import { Fieldset, Select } from "@mantine/core";
-import { TONAL_LADDERS, type TonalLadder } from "../../defs/tonal_ladders";
+import { TONAL_LADDERS } from "../../defs/data/tonalLadders";
 import type { Settings } from "../../interfaces/Settings.interface";
+import type { TonalLadder } from "../../interfaces/TonalLadder.interface";
 import type { SelectItem } from "../../interfaces/SelectItem.interface"
 import type { SelectGroup } from "../../interfaces/SelectGroup.interface"
 

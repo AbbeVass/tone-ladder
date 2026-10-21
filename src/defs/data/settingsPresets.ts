@@ -1,4 +1,4 @@
-import type { SettingsPreset } from "../interfaces/SettingsPreset.interface";
+import type { SettingsPreset } from "../../interfaces/SettingsPreset.interface";
 
 export const SETTINGS_PRESETS: SettingsPreset[] = [
   {

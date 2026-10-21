@@ -1,7 +1,7 @@
 import type { Settings } from "../../interfaces/Settings.interface";
 import { SETTINGS_STORAGE_KEY } from "../constants";
-import { SETTINGS_PRESETS } from "../settingsPresets";
-import { TONAL_LADDERS } from "../tonal_ladders";
+import { SETTINGS_PRESETS } from "../data/settingsPresets";
+import { TONAL_LADDERS } from "../data/tonalLadders";
 import { validSettingsObject } from "./validObjects";
 
 

@@ -1,6 +1,6 @@
-import type { Settings } from "../interfaces/Settings.interface";
-import { LENGTH_LIMITS } from "./constants";
-import { getTonalLadder } from "./functions/settingsStorage";
+import type { Settings } from "../../interfaces/Settings.interface";
+import { LENGTH_LIMITS } from "../constants";
+import { getTonalLadder } from "./settingsStorage";
 
 /**
  * Generate a new melody from the rules set by `settings`.

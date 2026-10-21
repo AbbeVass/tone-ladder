@@ -1,5 +1,5 @@
 import { Fieldset, Space, Text, Button } from "@mantine/core";
-import { TONE_COMBINATIONS } from "../../defs/toneCombinations";
+import { TONE_COMBINATIONS } from "../../defs/data/toneCombinations";
 import type { Settings } from "../../interfaces/Settings.interface";
 import SelectToneCombinationsMenu from "./SelectToneCombinationsMenu";
 

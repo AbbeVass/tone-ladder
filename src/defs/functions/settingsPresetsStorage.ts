@@ -1,7 +1,7 @@
 import type { Settings } from "../../interfaces/Settings.interface";
 import type { SettingsPreset } from "../../interfaces/SettingsPreset.interface";
 import { CUSTOM_PRESET_LABEL, SETTINGS_PRESETS_STORAGE_KEY } from "../constants";
-import { SETTINGS_PRESETS } from "../settingsPresets";
+import { SETTINGS_PRESETS } from "../data/settingsPresets";
 import { validSettingsPresetObject } from "./validObjects";
 
 /**
