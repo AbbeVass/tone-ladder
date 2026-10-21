@@ -116,10 +116,31 @@ export function storeSettingsPreset(preset: SettingsPreset): void {
 }
 
 /**
+ * Removes the preset with the label `presetLabel` from the stored presets.
+ * @param presetLabel the label of the preset that will be deleted
+ * @returns `true` if the preset was removed, `false` if no preset was found with a matching label
+ */
+export function deleteSettingsPreset(presetLabel: string): boolean {
+  const storedPresets = localStorage.getItem(SETTINGS_PRESETS_STORAGE_KEY);
+  if (storedPresets) {
+    const presetArray = JSON.parse(storedPresets);
+    if (Array.isArray(presetArray)) {
+      const filteredArray = presetArray.filter(set => set.label !== presetLabel)
+      if (filteredArray !== presetArray) {
+        localStorage.setItem(SETTINGS_PRESETS_STORAGE_KEY, JSON.stringify(filteredArray));
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+/**
  * Get all settings presets (settings packages)
+ * @param includeGlobalPreset include the global presets
  * @returns all presets, both the local stored and the server stored
  */
-export function getStoredSettingsPresets(): SettingsPreset[] {
+export function getStoredSettingsPresets(includeGlobalPresets: boolean = true): SettingsPreset[] {
   let validPresets: SettingsPreset[] = [];
   const presetLabels = new Set(SETTINGS_PRESETS.map((preset) => preset.label));
   const storedPresets = localStorage.getItem(SETTINGS_PRESETS_STORAGE_KEY);
@@ -141,7 +162,7 @@ export function getStoredSettingsPresets(): SettingsPreset[] {
   }
 
   // Return all presets
-  return SETTINGS_PRESETS.concat(validPresets);
+  return includeGlobalPresets ? SETTINGS_PRESETS.concat(validPresets) : validPresets;
 }
 
 /**

@@ -68,8 +68,9 @@ export default function Settings() {
           <SelectPreset
             settingsPresets={settingsPresets}
             selectedPreset={selectedPreset}
-            setSelectedPreset={setSelectedPreset}
             setSettings={setSettings}
+            setSettingsPresets={setSettingsPresets}
+            setSelectedPreset={setSelectedPreset}
           />
 
           <SelectKey

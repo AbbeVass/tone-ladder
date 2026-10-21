@@ -1,21 +1,39 @@
-import { Fieldset, Select } from "@mantine/core";
+import { useEffect, useState } from "react";
+import { Button, Fieldset, Flex, Select } from "@mantine/core";
 import { CUSTOM_PRESET_LABEL } from "../../defs/constants";
+import { deleteSettingsPreset, getStoredSettingsPresets } from "../../defs/functions";
 import type { SettingsPreset } from "../../interfaces/SettingsPreset.interface";
 import type { Settings } from "../../interfaces/Settings.interface";
 
 export interface SelectPresetProps {
   settingsPresets: SettingsPreset[];
   selectedPreset: string;
-  setSelectedPreset: (preset: string) => void;
   setSettings: (settings: Settings) => void;
+  setSettingsPresets: (presets: SettingsPreset[]) => void;
+  setSelectedPreset: (preset: string) => void;
 }
 
 export default function SelectPreset({
   settingsPresets,
   selectedPreset,
-  setSelectedPreset,
-  setSettings
+  setSettings,
+  setSettingsPresets,
+  setSelectedPreset
 }: SelectPresetProps) {
+
+  const [localPreset, setLocalPreset] = useState<boolean>(
+    getStoredSettingsPresets(false)
+      .map(set => set.label)
+      .includes(selectedPreset)
+  );
+
+  useEffect(() => {
+    setLocalPreset(getStoredSettingsPresets(false)
+      .map(set => set.label)
+      .includes(selectedPreset)
+    );
+  }, [selectedPreset]);
+
   return (
     <Fieldset
       legend="Färdiga inställningar"
@@ -43,11 +61,34 @@ export default function SelectPreset({
             for (const set of settingsPresets) {
               if (set.label === value) {
                 setSettings(set.settings);
+                setLocalPreset(getStoredSettingsPresets(false).includes(set));
               }
             }
           }
         }}
       />
+      
+      {localPreset && (
+        <Flex
+          pt={10}
+        >
+          <Button
+            size="xs"
+            color="red"
+            onClick={() => {
+              if (confirm(`Är du säker på att du vill radera inställningspaketet "${selectedPreset}"?`) &&
+                deleteSettingsPreset(selectedPreset))
+              {
+                setSelectedPreset(CUSTOM_PRESET_LABEL);
+                setSettingsPresets(getStoredSettingsPresets());
+                alert("Det valda inställningspaketet har raderats.");
+              }
+            }}
+          >
+            Radera lokalt paket
+            </Button>
+        </Flex>
+      )}
     </Fieldset>
   );
 }
