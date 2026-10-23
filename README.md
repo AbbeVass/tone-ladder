@@ -1,16 +1,16 @@
-# tone-ladder
+# Tone Ladder
 
 Copyright (C) 2026 Abbe Andersson Vass
 
 *Made in collaboration with [Anna Andersson Vass](https://www.kau.se/musikhogskolan-ingesund/om-mhi/om-mhi/kontakta-oss/vara-larare/anna-vass)*
 
-## Support tone-ladder
+## Support Tone Ladder
 
 [<img src="./src/assets/bmc-button.png" width="200">](https://www.buymeacoffee.com/abbevass)
 
 ## Description
 
-tone-ladder is an educational tool for generating short musical melodies and displaying them on a tonal ladder to help practice tonal relationships. As visual guidance, the complete tonal ladder is displayed as a staircase next to the generated melodies.
+Tone Ladder is an educational tool for generating short musical melodies and displaying them on a tonal ladder to help practice tonal relationships. As visual guidance, the complete tonal ladder is displayed as a staircase next to the generated melodies.
 
 The melodies are generated based on a set of rules managed on the settings page (`/tone-ladder/settings`). These rules are as follows:
 - The first tone is either decided by the user or random. If it's random, then the initial tone combination will be selected randomly instead of being one that starts with a specific tone. Practically this means that tones that aren't in the first position of any combination will never be the first tone of a melody if the first tone is set to random.
@@ -36,6 +36,10 @@ If you wish to delete all stored data, you can do this by clicking the red icon 
 
 *GPT-5 mini* have been used in `src/styles/svg.css` to tweek the CSS and responsiveness of the SVGs and their containers on the main page to make them scale correctly.
 
+## Development stack
+
+Tone Ladder is built in TypeScript using [Vite](https://vite.dev/), [React](https://react.dev/) and [Mantine](https://mantine.dev/).
+
 ## License
 
-The tone-ladder project is licensed under the terms of the MIT License. See the file LICENSE for the full license text.
+The Tone Ladder project is licensed under the terms of the MIT License. See the file LICENSE for the full license text.
