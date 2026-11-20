@@ -14,7 +14,7 @@ export default function DownloadDebugButton() {
         <>
           Ladda ned debug-data från localStorage: {' '}
           <Code color={TEXT_COLOR}>
-            &#123;settings, melody, settingsPresets&#125;
+            &#123;settings, overrideKey, melody, settingsPresets&#125;
           </Code>
         </>
       }

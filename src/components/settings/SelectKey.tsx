@@ -1,5 +1,6 @@
 import { Fieldset, Select } from "@mantine/core";
 import { TONAL_LADDERS } from "../../defs/data/tonalLadders";
+import { storeOverrideKey } from "../../defs/functions/settingsStorage";
 import type { Settings } from "../../interfaces/Settings.interface";
 import type { TonalLadder } from "../../interfaces/TonalLadder.interface";
 import type { SelectItem } from "../../interfaces/SelectItem.interface"
@@ -57,6 +58,7 @@ export default function SelectKey({
             let _tempSettings = getSettingsClone();
             _tempSettings.tonalLadder = JSON.parse(value)
             setSettings(_tempSettings);
+            storeOverrideKey(false);
           }
         }}
       />

@@ -1,5 +1,6 @@
 import {
   MELODY_STORAGE_KEY,
+  OVERRIDE_KEY_STORAGE_KEY,
   SETTINGS_PRESETS_STORAGE_KEY,
   SETTINGS_STORAGE_KEY
 } from "../constants";
@@ -12,9 +13,11 @@ export function downloadStoredObjects(id: string) {
   const settingsData = localStorage.getItem(SETTINGS_STORAGE_KEY);
   const melodyData = localStorage.getItem(MELODY_STORAGE_KEY);
   const settingsPresetsData = localStorage.getItem(SETTINGS_PRESETS_STORAGE_KEY);
+  const overrideKeyData = localStorage.getItem(OVERRIDE_KEY_STORAGE_KEY);
 
   const jsonData = {
     settings: settingsData ? JSON.parse(settingsData) : null,
+    overrideKey: overrideKeyData ? JSON.parse(overrideKeyData) : null,
     melody: melodyData ? JSON.parse(melodyData) : null,
     settingsPresets: settingsPresetsData ? JSON.parse(settingsPresetsData) : null
   };

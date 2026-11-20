@@ -11,6 +11,7 @@ export const HIGHLIGHT_COLOR = "#f06595"; // --mantine-color-pink-5
 export const SETTINGS_STORAGE_KEY = "settings";
 export const SETTINGS_PRESETS_STORAGE_KEY = "settingsPresets";
 export const MELODY_STORAGE_KEY = "melody";
+export const OVERRIDE_KEY_STORAGE_KEY = "overrideKey";
 
 export const CUSTOM_PRESET_LABEL = "Anpassad";
 
